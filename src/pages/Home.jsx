@@ -5,6 +5,7 @@ import {
   FaFacebookF,
   FaInstagram,
 } from "react-icons/fa";
+import { SiX } from "react-icons/si";
 import bgimg1 from "../assets/bg-img-1.png";
 import bgimg2 from "../assets/bg-img-2.png"
 import bgimg3 from "../assets/bg-img-3.jpeg"
@@ -28,12 +29,16 @@ useEffect(() => {
     <div className="relative w-full h-screen font-[prompt]">
 
       {/* Background Image */}
-      <img
-        src={images[current]}
-        alt="Luxury Home"
-        className="absolute inset-0 w-full h-full transition-opacity duration-1000"
+      {images.map((img, index) => (
+        <img
+          key={index}
+          src={img}
+          alt="Luxury Home"
+          className={`absolute inset-0 w-full h-full transition-opacity duration-[2000ms] ease-in-out ${
+            index === current ? "opacity-100" : "opacity-0"
+          }`}
         />
-
+      ))}
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
@@ -115,7 +120,7 @@ useEffect(() => {
       {/* Social Sidebar */}
       <div className="absolute right-6 -bottom-25 -translate-y-1/2 z-20 flex flex-col gap-4">
 
-        <SocialIcon><FaTwitter /></SocialIcon>
+        <SocialIcon><SiX /></SocialIcon>
         <SocialIcon><FaLinkedinIn /></SocialIcon>
         <SocialIcon><FaFacebookF /></SocialIcon>
         <SocialIcon><FaInstagram /></SocialIcon>
