@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
+import Ad from "./pages/PropertyAd";
 
 
 const HomeStack = () => (
   <>
     <Home />
-    
+    <Ad />
   </>
 );
 //inside const Homestack if needed ->  <Waves />
