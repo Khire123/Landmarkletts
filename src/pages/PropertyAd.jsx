@@ -25,9 +25,9 @@ export default function PropertyAd() {
 
   function DetailPill({ icon, text }) {
   return (
-    <div className="flex items-center gap-3 border border-gray-400 px-5 py-3 rounded-full bg-white/40 backdrop-blur-sm text-sm sm:text-base">
+    <div className="flex items-center gap-3 border border-gray-400 px-2 py-1 sm:px-5 sm:py-3 rounded-full bg-white/40 backdrop-blur-sm text-xs sm:text-sm sm:text-base">
 
-      <span className="text-lg">
+      <span className="text-sm sm:text-lg">
         {icon}
       </span>
 
@@ -98,21 +98,21 @@ export default function PropertyAd() {
           <img
             src={curve}
             alt="Property Details Background"
-            className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
+            className="absolute inset-0 w-full h-full object-full sm:object-contain select-none pointer-events-none"
           />
 
-          <div className="relative z-10 flex flex-col h-full p-8 pr-0 pt-12">
+          <div className="relative z-10 flex flex-col h-full p-8 pr-0 pt-6 sm:pt-12">
 
         {/* ---------- HEADER ROW ---------- */}
         <div className="flex items-center">
 
-            <h3 className="text-2xl font-semibold">
+            <h3 className="text-md sm:text-2xl font-semibold">
             Property Details
             </h3>
 
             {/* Status Badge */}
-            <div className="flex items-center gap-2 bg-[#2f3540] text-white px-4 py-1.5 rounded-tl-full rounded-bl-full text-sm ml-auto">
-            <span className="w-2 h-2 bg-white rounded-full"></span>
+            <div className="flex items-center gap-2 bg-[#2f3540] text-white px-4 py-1.5 rounded-tl-full rounded-bl-full text-xs  sm:text-sm ml-auto">
+            <span className="w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full"></span>
             For Sale
             </div>
 
@@ -120,7 +120,7 @@ export default function PropertyAd() {
 
 
         {/* ---------- DETAILS PILLS ---------- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 mr-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-4 sm:mt-8 mr-6">
 
             <DetailPill icon={<FiHome />} text="The Kensington Villa" />
             <DetailPill icon={<FiMapPin />} text="Kensington, London" />
@@ -132,13 +132,13 @@ export default function PropertyAd() {
 
 
         {/* ---------- CTA BUTTON ---------- */}
-        <div className="mt-auto pt-8 ml-10">
-            <button className="bg-[#2f3540] text-white px-35 py-3 rounded-full text-lg hover:opacity-90 transition cursor-pointer">
+        <div className="mt-auto pt-8 ml-5 sm:ml-10">
+            <button className="bg-[#2f3540] text-white px-15 sm:px-35 py-3 rounded-full text-sm sm:text-lg hover:opacity-90 transition cursor-pointer">
             Details
             </button>
         </div>
 
-        <div className="mt-auto pt-10">
+        <div className="mt-auto pt-12">
             <span className="text-[#2f3540] rounded-full text-2xl over:opacity-90 transition">
             Price : £1,250,000
             </span>
@@ -146,7 +146,7 @@ export default function PropertyAd() {
 
 
         {/* ---------- ARROWS (POSITIONED IN CURVE) ---------- */}
-        <div className="absolute bottom-4 right-6 flex gap-4">
+        <div className="absolute bottom-3 sm:bottom-4 right-0 sm:right-6 flex gap-4">
 
             <button
             onClick={() =>
@@ -154,7 +154,7 @@ export default function PropertyAd() {
                 (prev) => (prev - 1 + images.length) % images.length
                 )
             }
-            className="w-10 h-10 rounded-full border border-black flex items-center justify-center bg-white/80 backdrop-blur hover:bg-black hover:text-white transition cursor-pointer"
+            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white/80 backdrop-blur hover:bg-black hover:text-white transition cursor-pointer"
             >
             <FiArrowLeft />
             </button>
@@ -163,7 +163,7 @@ export default function PropertyAd() {
             onClick={() =>
                 setActiveImg((prev) => (prev + 1) % images.length)
             }
-            className="w-10 h-10 rounded-full border border-black flex items-center justify-center bg-white hover:bg-black hover:text-white transition cursor-pointer"
+            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white hover:bg-black hover:text-white transition cursor-pointer"
             >
             <FiArrowRight />
             </button>
@@ -177,7 +177,7 @@ export default function PropertyAd() {
       </div>
 
       {/* ================= BOTTOM STATS ================= */}
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 mt-16 text-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 mt-20 sm:mt-16 text-center">
 
         <Stat number="100%" label="Satisfactions Clients" border />
         <Stat number="500+" label="Property sells" border />
@@ -195,7 +195,7 @@ function Stat({ number, label, border }) {
   return (
     <div
       className={`
-        flex flex-col items-center gap-2 px-6 py-0
+        flex flex-col items-center gap-2 px-6 py-5 sm:py-0
         ${border ? "md:border-r md:border-gray-500" : ""}
       `}
     >

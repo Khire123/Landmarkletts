@@ -9,7 +9,6 @@ import { SiX } from "react-icons/si";
 import bgimg1 from "../assets/bg-img-1.png";
 import bgimg2 from "../assets/bg-img-2.png"
 import bgimg3 from "../assets/bg-img-3.jpeg"
-import logo from "../assets/logo.png";
 import Navbar from "../components/Navbar";
 
 
