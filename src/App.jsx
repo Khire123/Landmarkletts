@@ -1,33 +1,36 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Ad from "./pages/PropertyAd";
+import AboutUs from "./pages/AboutUs";
 
-
-const HomeStack = () => (
-  <>
-    <Home />
-    <Ad />
-  </>
-);
-//inside const Homestack if needed ->  <Waves />
-const Layout = () => {
-
+/* 
+  This stack makes everything appear in ONE scroll page.
+  Home → Ad → AboutUs
+*/
+const HomeStack = () => {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomeStack />} />
-      </Routes>
+      <Home />
+      <Ad />
+      <AboutUs />
     </>
   );
 };
 
-const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 function App() {
   return (
-      <BrowserRouter>
-        <Layout />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        {/* Main Landing Page (Scroll Page) */}
+        <Route path="/" element={<HomeStack />} />
+
+        {/* Optional: If later you want standalone About page,
+            you can uncomment below */}
+        {/* <Route path="/about" element={<AboutUs />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
