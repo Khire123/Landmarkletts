@@ -68,7 +68,7 @@ useEffect(() => {
           </button>
 
           {/* Happy Clients */}
-          <div className="flex items-center gap-3 sm:gap-4 mt-16 sm:mt-24 md:mt-30">
+          <div className="flex items-center gap-3 sm:gap-4 mt-16 sm:mt-24 md:mt-30 mb-10">
 
             <div className="flex -space-x-3">
               <img
@@ -95,7 +95,7 @@ useEffect(() => {
       </div>
 
       {/* Social Sidebar */}
-      <div className="absolute right-4 sm:right-6 bottom-6 sm:bottom-10 z-20 flex flex-row sm:flex-col gap-3 sm:gap-4">
+    <div className=" relative flex justify-center mt-4 bottom-5 sm:absolute sm:right-6 sm:bottom-10 sm:flex-col z-20 gap-3 sm:gap-4">
 
         <SocialIcon><SiX /></SocialIcon>
         <SocialIcon><FaLinkedinIn /></SocialIcon>

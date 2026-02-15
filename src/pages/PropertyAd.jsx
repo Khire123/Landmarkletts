@@ -39,7 +39,7 @@ export default function PropertyAd() {
 
 
   return (
-    <section className="w-full bg-[#EEEEEE] py-16 px-6 md:px-12 lg:px-20 font-[prompt]">
+    <section className="w-full bg-[#EEEEEE]/36 py-16 px-6 md:px-12 lg:px-20 font-[prompt]">
 
       {/* ================= TOP HEADING ================= */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 mb-12">
