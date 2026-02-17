@@ -184,3 +184,16 @@
 .diagonal-shape {
   clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
