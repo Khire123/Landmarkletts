@@ -17,6 +17,7 @@ const services = [
 const Services = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   const total = services.length;
 
@@ -24,8 +25,15 @@ const Services = () => {
     if (paused) return;
 
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % total);
-    }, 3500);
+      setAnimate(true);
+
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % total);
+
+        // Instantly reset animation state after content swap
+        setAnimate(false);
+      }, 700); // match CSS duration
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [paused, total]);
@@ -35,7 +43,6 @@ const Services = () => {
 
   return (
     <section className="w-full bg-[#eaeaea] py-20 px-6 lg:px-16 overflow-hidden">
-
       {/* HEADER */}
       <div className="flex flex-col lg:flex-row justify-between items-start gap-10 mb-20">
         <h1 className="text-[60px] lg:text-[90px] leading-[0.9] font-serif uppercase">
@@ -45,8 +52,8 @@ const Services = () => {
         <div className="max-w-md">
           <p className="text-gray-600 mb-8 text-lg">
             Comprehensive property services designed to simplify letting,
-            management, and sales — delivered with expertise, integrity,
-            and results-driven strategies.
+            management, and sales — delivered with expertise, integrity, and
+            results-driven strategies.
           </p>
           <button className="flex items-center gap-3 border border-black px-8 py-4 rounded-full hover:bg-black hover:text-white transition-all font-medium">
             See Our Services ↗
@@ -56,29 +63,30 @@ const Services = () => {
 
       {/* SLIDER */}
       <div
-        className="relative w-full max-w-[1350px] mx-auto flex gap-8"
+        className="flex gap-8 w-full max-w-[1300px] mx-auto"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-
         {/* LEFT BIG CARD */}
         <div
-          key={current}
-          className="relative flex-[2.8] h-[580px] rounded-[42px] overflow-hidden shadow-2xl transition-all duration-1000"
+          className={`relative flex-[2.6] h-[560px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700`}
           style={{
-            transition: "all 1s cubic-bezier(0.22, 1, 0.36, 1)"
+            transform: animate ? "translateX(-120px)" : "translateX(0px)",
+            transition: "transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
           }}
         >
           <img
             src={leftCard.image}
             alt={leftCard.title}
-            className="w-full h-full object-cover transition-transform duration-1000"
+            className={`w-full h-full object-cover transition-all duration-700 ${
+              animate ? "scale-105" : "scale-100"
+            }`}
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-          <div className="absolute bottom-12 left-12 right-12">
-            <h3 className="text-white text-4xl font-semibold leading-tight">
+          <div className="absolute bottom-10 left-10 right-10">
+            <h3 className="text-white text-4xl font-medium leading-tight transition-all duration-500">
               {leftCard.title}
             </h3>
           </div>
@@ -90,22 +98,23 @@ const Services = () => {
 
         {/* RIGHT SMALL CARD */}
         <div
-          key={(current + 1) % total}
-          className="relative flex-[0.8] h-[580px] rounded-[42px] overflow-hidden shadow-2xl transition-all duration-1000"
+          className={`relative flex-[0.9] h-[560px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700`}
           style={{
-            transition: "all 1s cubic-bezier(0.22, 1, 0.36, 1)"
+            transform: animate ? "translateX(-200px)" : "translateX(0px)",
+            opacity: animate ? 0.7 : 1,
+            transition: "all 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
           }}
         >
           <img
             src={rightCard.image}
             alt={rightCard.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-all duration-700"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-          <div className="absolute bottom-12 left-8 right-8">
-            <h3 className="text-white text-lg font-medium leading-tight">
+          <div className="absolute bottom-10 left-10 right-10">
+            <h3 className="text-white text-lg font-medium leading-tight transition-all duration-500">
               {rightCard.title}
             </h3>
           </div>
@@ -114,7 +123,6 @@ const Services = () => {
             <span className="text-2xl text-black">↗</span>
           </div>
         </div>
-
       </div>
     </section>
   );
