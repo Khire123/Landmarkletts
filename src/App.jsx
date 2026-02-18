@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Ad from "./pages/PropertyAd";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
+import Whoweserve from "./pages/Whoweserve";
+import Feedback from "./pages/Feedback";
 
 /* 
   This stack makes everything appear in ONE scroll page.
@@ -17,6 +19,8 @@ const HomeStack = () => {
       <Ad />
       <AboutUs />
       <Services />
+      <Whoweserve />
+      <Feedback />
     </>
   );
 };

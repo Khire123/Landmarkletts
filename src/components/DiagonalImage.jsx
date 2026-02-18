@@ -1,9 +1,13 @@
 import React from "react";
 
-const DiagonalImage = ({ src, alt }) => {
+const DiagonalImage = ({
+  src,
+  alt = "image",
+  height = "h-[280px] sm:h-[450px] md:h-auto",
+}) => {
   return (
-    <div className="absolute right-0 top-0 h-full w-1/2 hidden md:block">
-      <div className="relative h-full w-full diagonal-shape overflow-hidden">
+    <div className={`w-full md:w-1/2 ${height} relative`}>
+      <div className="relative h-full w-full overflow-hidden diagonal-image-shape">
         <img
           src={src}
           alt={alt}

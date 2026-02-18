@@ -42,7 +42,8 @@ const Services = () => {
   const rightCard = services[(current + 1) % total];
 
   return (
-    <section className="w-full bg-[#eaeaea] py-20 px-6 lg:px-16 overflow-hidden">
+    <section className="w-full bg-[#EEEEEE]/36 py-20 px-6 lg:px-16 overflow-hidden">
+
       {/* HEADER */}
       <div className="flex flex-col lg:flex-row justify-between items-start gap-10 mb-20">
         <h1 className="text-[60px] lg:text-[90px] leading-[0.9] font-serif uppercase">
