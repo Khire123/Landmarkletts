@@ -1,9 +1,11 @@
 import React from "react";
 import bgAbout from "../assets/bgAbout.png";
+import DiagonalImage from "../components/DiagonalImage";
+
 
 const AboutUs = () => {
   return (
-    <section className="relative w-full min-h-screen bg-[#f1f1f1]/36 overflow-hidden">
+    <section className="relative w-full min-h-screen bg-[#EEEEEE]/36 overflow-hidden">
 
       <div className="flex flex-col md:flex-row min-h-screen">
 
@@ -37,20 +39,12 @@ const AboutUs = () => {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="w-full md:w-1/2 h-[320px] sm:h-[450px] md:h-auto relative">
-          <div className="relative h-full w-full overflow-hidden md:diagonal-shape">
-            <img
-              src={bgAbout}
-              alt="About"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+        <DiagonalImage src={bgAbout} alt="About Us" />
 
       </div>
 
       {/* FLOATING GLASS BUTTON — ORIGINAL STYLE */}
-      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 right-6 sm:right-12 md:right-24">
+      <div className="absolute bottom-8 sm:bottom-20 md:bottom-16 right-6 sm:right-12 md:right-24">
         <button
           className="
             px-10 py-3 rounded-full

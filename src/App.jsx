@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Ad from "./pages/PropertyAd";
 import AboutUs from "./pages/AboutUs";
+import Services from "./pages/Services";
+import Whoweserve from "./pages/Whoweserve";
+import Feedback from "./pages/Feedback";
 
 /* 
   This stack makes everything appear in ONE scroll page.
@@ -15,6 +18,9 @@ const HomeStack = () => {
       <Home />
       <Ad />
       <AboutUs />
+      <Services />
+      <Whoweserve />
+      <Feedback />
     </>
   );
 };
@@ -25,6 +31,7 @@ function App() {
       <Routes>
         {/* Main Landing Page (Scroll Page) */}
         <Route path="/" element={<HomeStack />} />
+        
 
         {/* Optional: If later you want standalone About page,
             you can uncomment below */}
