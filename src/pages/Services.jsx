@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { FiArrowUpRight } from "react-icons/fi";
 import img1 from "../assets/ourservice_img1.png";
 import img2 from "../assets/ourservice_img2.png";
 import img3 from "../assets/ourservice_img3.png";
@@ -7,17 +7,17 @@ import img4 from "../assets/ourservice_img4.png";
 import img5 from "../assets/ourservice_img5.png";
 
 const services = [
-  { title: "Full Property Management & Rent Collection", image: img1 },
-  { title: "Property Sales & Marketing", image: img2 },
-  { title: "Tenant Referencing", image: img3 },
-  { title: "Investment Advisory", image: img4 },
-  { title: "Luxury Property Advisory", image: img5 },
+  { title: "Full Property Management & Rent Collection", image: img2 },
+  { title: "Property Sales & Marketing", image: img3 },
+  { title: "Property Valuation & Market Appraisal", image: img4 },
+  { title: "Landlord Support & Investment Advisory", image: img5 },
+  { title: "Property Letting & Tenant Referencing", image: img1 },
 ];
 
 const Services = () => {
-  const [current, setCurrent] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [stage, setStage] = useState("idle");
   const [paused, setPaused] = useState(false);
-  const [animate, setAnimate] = useState(false);
 
   const total = services.length;
 
@@ -25,106 +25,203 @@ const Services = () => {
     if (paused) return;
 
     const interval = setInterval(() => {
-      setAnimate(true);
+
+      // Step 1: Hide right instantly
+      setStage("hideRight");
 
       setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % total);
+        // Step 2: Start movement + width grow
+        setStage("move");
+      }, 100);
 
-        // Instantly reset animation state after content swap
-        setAnimate(false);
-      }, 700); // match CSS duration
+      setTimeout(() => {
+        // Step 3: Reset
+        setIndex((prev) => (prev + 1) % total);
+        setStage("idle");
+      }, 900);
+
     }, 4000);
 
     return () => clearInterval(interval);
   }, [paused, total]);
 
-  const leftCard = services[current];
-  const rightCard = services[(current + 1) % total];
+  const leftCard = services[index];
+  const rightCard = services[(index + 1) % total];
+  const nextRight = services[(index + 2) % total];
 
   return (
-    <section className="w-full bg-[#EEEEEE]/36 py-20 px-6 lg:px-16 overflow-hidden">
+    <section className="w-full bg-[#EEEEEE]/36 py-10 px-6 lg:px-16 overflow-hidden font-[prompt]">
 
-      {/* HEADER */}
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-10 mb-20">
-        <h1 className="text-[60px] lg:text-[90px] leading-[0.9] font-serif uppercase">
-          Our <br /> Services
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 mb-12">
+
+        <h1 className="text-4xl lg:text-[120px] leading-[0.9] font-serif text-black sm:-mt-10">
+          Our <br />
+          Services
         </h1>
 
-        <div className="max-w-md">
-          <p className="text-gray-600 mb-8 text-lg">
-            Comprehensive property services designed to simplify letting,
-            management, and sales — delivered with expertise, integrity, and
-            results-driven strategies.
-          </p>
-          <button className="flex items-center gap-3 border border-black px-8 py-4 rounded-full hover:bg-black hover:text-white transition-all font-medium">
-            See Our Services ↗
-          </button>
-        </div>
+        <div className="max-w-lg flex flex-col gap-6">
+
+        <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+          Comprehensive property services designed to simplify letting, management, 
+          and sales — delivered with expertise, integrity, and results-driven strategies.
+        </p>
+
+        {/* ---- BUTTON ---- */}
+        <button className="group flex items-center justify-between border-2 border-gray-500 rounded-full px-6 py-3 w-[260px] sm:w-[300px] hover:border-black transition">
+
+          <span className="text-black text-sm sm:text-base">
+            See Our Services
+          </span>
+
+          {/* ICON CIRCLE */}
+          <span className="ml-4 flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 group-hover:bg-black transition">
+
+            <FiArrowUpRight className="text-black group-hover:text-white transition text-3xl" />
+
+          </span>
+
+        </button>
+
       </div>
 
-      {/* SLIDER */}
+
+      </div>
+
       <div
-        className="flex gap-8 w-full max-w-[1300px] mx-auto"
+        className="relative max-w-[1300px] mx-auto h-[560px] mt-20"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        {/* LEFT BIG CARD */}
+
         <div
-          className={`relative flex-[2.6] h-[560px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700`}
+          className="absolute top-0 left-0 h-full rounded-[40px] overflow-hidden shadow-2xl"
           style={{
-            transform: animate ? "translateX(-120px)" : "translateX(0px)",
-            transition: "transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
+            width: "68%",
+            opacity: stage === "move" ? 0 : 1,
+            transition: "opacity 0.4s ease",
           }}
         >
+
+          {/* IMAGE */}
           <img
             src={leftCard.image}
-            alt={leftCard.title}
-            className={`w-full h-full object-cover transition-all duration-700 ${
-              animate ? "scale-105" : "scale-100"
-            }`}
+            alt=""
+            className="w-full h-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+          {/* GRADIENT OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-          <div className="absolute bottom-10 left-10 right-10">
-            <h3 className="text-white text-4xl font-medium leading-tight transition-all duration-500">
+          {/* TOP RIGHT ICON */}
+            <div className="absolute top-6 right-6 z-20">
+
+              <button className="w-12 h-12 rounded-full border border-black/40 bg-white/40 backdrop-blur-md flex items-center justify-center hover:bg-black hover:text-white hover:text-white transition">
+
+                <FiArrowUpRight className="text-black hover:text-white transition text-3xl" />
+
+              </button>
+
+            </div>
+
+
+          {/* TEXT */}
+          <div className="absolute bottom-8 left-8 right-8">
+
+            <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-medium leading-snug">
               {leftCard.title}
-            </h3>
+            </h2>
+
           </div>
 
-          <div className="absolute top-8 right-8 bg-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform">
-            <span className="text-2xl text-black">↗</span>
-          </div>
         </div>
 
-        {/* RIGHT SMALL CARD */}
+
         <div
-          className={`relative flex-[0.9] h-[560px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700`}
-          style={{
-            transform: animate ? "translateX(-200px)" : "translateX(0px)",
-            opacity: animate ? 0.7 : 1,
-            transition: "all 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
-          }}
-        >
-          <img
-            src={rightCard.image}
-            alt={rightCard.title}
-            className="w-full h-full object-cover transition-all duration-700"
-          />
+        className="absolute top-0 h-full rounded-[40px] overflow-hidden shadow-2xl"
+        style={{
+          left: stage === "move" ? "0%" : "72%",
+          width: stage === "move" ? "68%" : "28%",
+          opacity: stage === "hideRight" ? 0 : 1,
+          transition:
+            stage === "move"
+              ? "left 0.8s cubic-bezier(0.4,0,0.2,1), width 0.8s cubic-bezier(0.4,0,0.2,1)"
+              : "opacity 0.1s linear",
+        }}
+      >
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+        <img
+          src={rightCard.image}
+          alt=""
+          className="w-full h-full object-cover"
+        />
 
-          <div className="absolute bottom-10 left-10 right-10">
-            <h3 className="text-white text-lg font-medium leading-tight transition-all duration-500">
-              {rightCard.title}
-            </h3>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+        {/* TOP RIGHT ICON */}
+          <div className="absolute top-4 right-4 z-20">
+
+            <button className="w-10 h-10 rounded-full border border-black/40 bg-white/40 backdrop-blur-md flex items-center justify-center hover:bg-black hover:text-white transition">
+
+              <FiArrowUpRight className="text-black hover:text-white text-2xl" />
+
+            </button>
+
           </div>
 
-          <div className="absolute top-8 right-8 bg-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform">
-            <span className="text-2xl text-black">↗</span>
-          </div>
+
+        <div className="absolute bottom-6 left-6 right-6">
+          <h3 className="text-white text-sm sm:text-lg font-medium leading-snug">
+            {rightCard.title}
+          </h3>
         </div>
+
       </div>
+
+
+        {/* NEW RIGHT CARD */}
+        {/* NEW RIGHT CARD */}
+        {stage === "move" && (
+          <div
+            className="absolute top-0 h-full w-[28%] rounded-[40px] overflow-hidden shadow-2xl"
+            style={{
+              left: "100%",
+              animation: "slideIn 0.8s cubic-bezier(0.4,0,0.2,1) forwards",
+            }}
+          >
+            <img
+              src={nextRight.image}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+
+      </div>
+
+      {/* -------- CAROUSEL DOTS -------- */}
+      <div className="flex justify-center mt-10 gap-3">
+
+        {services.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setIndex(i);
+              setStage("idle");
+            }}
+            className={`
+              transition-all duration-300 rounded-full
+              ${
+                index === i
+                  ? "w-8 h-2 bg-black"
+                  : "w-2 h-2 bg-gray-400 hover:bg-gray-600"
+              }
+            `}
+          />
+        ))}
+
+      </div>
+
     </section>
   );
 };

@@ -3,11 +3,21 @@ import React from "react";
 const DiagonalImage = ({
   src,
   alt = "image",
-  height = "h-[280px] sm:h-[450px] md:h-auto",
+  height = "600px",
+  slope = 60, // controls how deep the top-left cut is (5–30 works well)
 }) => {
+
+  const clipPath = `polygon(${slope}% 0, 100% 0, 100% 100%, 0% 100%)`;
+
   return (
-    <div className={`w-full md:w-1/2 ${height} relative`}>
-      <div className="relative h-full w-full overflow-hidden diagonal-image-shape">
+    <div className="w-full md:w-1/2 relative">
+      <div
+        className="relative w-full overflow-hidden"
+        style={{
+          height: height,
+          clipPath: clipPath,
+        }}
+      >
         <img
           src={src}
           alt={alt}

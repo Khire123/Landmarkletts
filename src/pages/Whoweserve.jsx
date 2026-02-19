@@ -31,46 +31,93 @@ const data = [
 
 const Card = ({ item }) => {
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition duration-300 text-left h-full">
-      <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 mb-6">
-        {item.icon}
+    <div
+      className="
+        relative
+        bg-white
+        rounded-2xl
+        p-8
+        shadow-sm
+        border border-transparent
+        overflow-hidden
+        transition-all duration-300
+        hover:-translate-y-2
+        hover:shadow-lg
+        hover:border-[#2E3540]/40
+        h-full
+        group
+      "
+    >
+
+      {/* ---- HOVER TEXTURE / TINT ---- */}
+      <div
+        className="
+          absolute inset-0
+          opacity-0
+          group-hover:opacity-100
+          transition duration-500
+          bg-gradient-to-br
+          from-[#2E3540]/5
+          via-transparent
+          to-[#2E3540]/10
+          pointer-events-none
+        "
+      />
+
+      {/* CONTENT */}
+      <div className="relative z-10">
+
+        {/* Icon */}
+        <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-[#2E3540]/10 text-[#2E3540] mb-6 transition duration-300 group-hover:bg-[#2E3540]/20">
+          {item.icon}
+        </div>
+
+        {/* Title */}
+        <h3 className="text-lg font-semibold text-[#2E3540] mb-4">
+          {item.title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-gray-600 text-sm leading-relaxed">
+          {item.desc}
+        </p>
+
       </div>
-
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">
-        {item.title}
-      </h3>
-
-      <p className="text-gray-600 text-sm leading-relaxed">
-        {item.desc}
-      </p>
     </div>
   );
 };
+
+
+
 
 const Whoweserve = () => {
   return (
     <section className="w-full bg-gradient-to-br bg-[#EEEEEE]/36 font[prompt] py-24 px-6">
       <div className="max-w-6xl mx-auto text-center">
-
         {/* Small Heading */}
-        <p className="text-sm tracking-widest text-[#34495E] font-semibold mb-4">
+        <p className="text-sm tracking-widest text-[#2E3540] font-semibold mb-4">
           WHO WE SERVE
         </p>
 
-        {/* Main Heading */}
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-          Tailored solutions for{" "}
-          <span className="text-[#1F2A44] text-600">every</span> property need.
-        </h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            Tailored solutions for{" "}
+            <span
+              className="text-white italic"
+              style={{ WebkitTextStroke: "2px black" }}
+            >
+              every
+            </span>{" "}
+            property need.
+          </h1>
 
         {/* Subtitle */}
         <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
-          No matter where you are in your property journey, we have the expertise to help you succeed.
+          No matter where you are in your property journey, we have the
+          expertise to help you succeed.
         </p>
 
         {/* Cards Section */}
         <div className="mt-16 space-y-8">
-
           {/* First Row - 3 Cards */}
           <div className="grid gap-8 md:grid-cols-3">
             {data.slice(0, 3).map((item, index) => (
@@ -86,9 +133,7 @@ const Whoweserve = () => {
               </div>
             ))}
           </div>
-
         </div>
-
       </div>
     </section>
   );
