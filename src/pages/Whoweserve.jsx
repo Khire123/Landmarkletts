@@ -49,18 +49,18 @@ const Card = ({ item }) => {
 
 const Whoweserve = () => {
   return (
-    <section className="w-full bg-gradient-to-br from-[#f3f6fb] to-[#e9edf5] py-24 px-6">
+    <section className="w-full bg-gradient-to-br bg-[#EEEEEE]/36 font[prompt] py-24 px-6">
       <div className="max-w-6xl mx-auto text-center">
 
         {/* Small Heading */}
-        <p className="text-sm tracking-widest text-blue-600 font-semibold mb-4">
+        <p className="text-sm tracking-widest text-[#34495E] font-semibold mb-4">
           WHO WE SERVE
         </p>
 
         {/* Main Heading */}
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
           Tailored solutions for{" "}
-          <span className="text-blue-600">every</span> property need.
+          <span className="text-[#1F2A44] text-600">every</span> property need.
         </h1>
 
         {/* Subtitle */}

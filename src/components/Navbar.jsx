@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 
 export default function Navbar() {
-  return (
-    <header className="absolute top-0 left-0 w-full z-20">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5 text-white">
+  const [scrolled, setScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-black/80 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
+      <div
+        className={`max-w-7xl mx-auto flex items-center justify-between px-6 transition-all duration-300 ${
+          scrolled ? "py-2" : "py-5"
+        } text-white`}
+      >
         {/* Logo */}
         <div className="flex items-center">
           <img
             src={logo}
             alt="Landmark Letts Logo"
-            className="h-30 w-auto object-contain"
+            className={`object-contain transition-all duration-300 ${
+              scrolled ? "h-20" : "h-30"
+            }`}
           />
         </div>
 
@@ -26,7 +48,6 @@ export default function Navbar() {
         <button className="border border-white px-5 py-2 rounded-full text-md hover:bg-white hover:text-black transition cursor-pointer">
           Contact
         </button>
-
       </div>
     </header>
   );

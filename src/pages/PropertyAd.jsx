@@ -1,47 +1,101 @@
-import React, { useState } from "react";
-import main1 from "../assets/thumb1.png";   // Big images
-import main2 from "../assets/thumb2.png";
-import main3 from "../assets/thumb3.png";
+import React, { useState, useEffect } from "react";
+import PropertyAdCard from "../components/PropertyAdUi";
 
 import thumb1 from "../assets/thumb1.png";
 import thumb2 from "../assets/thumb2.png";
 import thumb3 from "../assets/thumb3.png";
 
-import curve from "../assets/curve.png";
-import { FiArrowLeft, FiArrowRight, FiHome, FiMapPin, FiTag } from "react-icons/fi";
-import { FaBed, FaBath, FaCar } from "react-icons/fa";
-import { TbRulerMeasure } from "react-icons/tb";
-
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 export default function PropertyAd() {
 
-  /* ---------------- IMAGE GALLERY STATE ---------------- */
-  const images = [thumb1, thumb2, thumb3];
-  const thumbs = [thumb1, thumb2, thumb3];
+  const AUTO_SLIDE_INTERVAL = 4000; // 4 seconds
 
+  /* -------- PROPERTIES DATA -------- */
+  const properties = [
+  {
+    name: "The Kensington Villa",
+    location: "Kensington, London",
+    bed: "4 Bedrooms",
+    bath: "2 Bathroom",
+    car: "2 Cars",
+    area: "3,200 sq ft",
+    price: "£1,250,000",
+    images: [thumb1, thumb2, thumb3],
+    thumbs: [thumb1, thumb2, thumb3],
+  },
+
+  {
+    name: "Palm Luxury Estate",
+    location: "Palm Jumeirah, Dubai",
+    bed: "5 Bedrooms",
+    bath: "4 Bathroom",
+    car: "3 Cars",
+    area: "4,500 sq ft",
+    price: "£2,100,000",
+    images: [thumb2, thumb3, thumb1],
+    thumbs: [thumb2, thumb3, thumb1],
+  },
+
+  {
+    name: "Skyline Penthouse",
+    location: "Manhattan, New York",
+    bed: "3 Bedrooms",
+    bath: "3 Bathroom",
+    car: "2 Cars",
+    area: "2,100 sq ft",
+    price: "£1,800,000",
+    images: [thumb3, thumb1, thumb2],
+    thumbs: [thumb3, thumb1, thumb2],
+  },
+];
+
+
+  const [index, setIndex] = useState(0);
   const [activeImg, setActiveImg] = useState(0);
 
-  /* ----------------------------------------------------- */
+  /* -------- ARROW FUNCTIONS -------- */
+  const next = () => {
+    setIndex((prev) => (prev + 1) % properties.length);
+    setActiveImg(0);
+  };
 
-  function DetailPill({ icon, text }) {
-  return (
-    <div className="flex items-center gap-3 border border-gray-400 px-2 py-1 sm:px-5 sm:py-3 rounded-full bg-white/40 backdrop-blur-sm text-xs sm:text-sm sm:text-base">
+  const prev = () => {
+    setIndex(
+      (prev) =>
+        (prev - 1 + properties.length) %
+        properties.length
+    );
+    setActiveImg(0);
+  };
 
-      <span className="text-sm sm:text-lg">
-        {icon}
-      </span>
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % properties.length);
+    setActiveImg(0);
+  }, AUTO_SLIDE_INTERVAL);
 
-      <span>{text}</span>
+  return () => clearInterval(interval);
+}, [properties.length]);
 
-    </div>
-  );
-}
-
-
+  function Stat({ number, label, border }) {
+    return (
+      <div
+        className={`flex flex-col items-center gap-2 px-6 py-5 sm:py-0 ${
+          border ? "md:border-r md:border-gray-500" : ""
+        }`}
+      >
+        <h4 className="text-3xl sm:text-4xl font-semibold">
+          {number}
+        </h4>
+        <p className="text-gray-500 text-sm">{label}</p>
+      </div>
+    );
+  }
   return (
     <section className="w-full bg-[#EEEEEE]/36 py-16 px-6 md:px-12 lg:px-20 font-[prompt]">
 
-      {/* ================= TOP HEADING ================= */}
+      {/* HEADING */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 mb-12">
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-semibold leading-tight max-w-3xl">
@@ -56,127 +110,84 @@ export default function PropertyAd() {
 
       </div>
 
-      {/* ================= IMAGE + DETAILS ================= */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      {/* ================= SLIDER WRAPPER ================= */}
+      <div className="max-w-7xl mx-auto relative overflow-hidden">
 
-        {/* -------- LEFT : BIG IMAGE + THUMBS -------- */}
-        <div className="relative rounded-3xl overflow-hidden">
+        {/* SLIDING TRACK */}
+       <div
+        className="flex transition-transform duration-700 ease-in-out -mx-6"
+        style={{ transform: `translateX(-${index * 100}%)` }}
+      >
 
-          {/* BIG IMAGE */}
-          <img
-            src={images[activeImg]}
-            alt="Property"
-            className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[460px] object-cover rounded-3xl transition-all duration-500"
-          />
+          {properties.map((property, i) => (
+            <div key={i} className="min-w-full px-6">
 
-          {/* THUMBNAILS */}
-          <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full flex gap-3">
-
-            {thumbs.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt="thumb"
-                onClick={() => setActiveImg(index)}
-                className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 cursor-pointer transition-all duration-300
-                  ${
-                    activeImg === index
-                      ? "border-white scale-110"
-                      : "border-transparent opacity-70 hover:opacity-100"
-                  }`}
+              <PropertyAdCard
+                property={property}
+                activeImg={activeImg}
+                setActiveImg={setActiveImg}
               />
-            ))}
 
-          </div>
 
-        </div>
-
-        {/* -------- RIGHT : PROPERTY DETAILS -------- */}
-        <div className="relative h-[320px] sm:h-[380px] md:h-[420px] lg:h-[420px] w-full">
-
-          {/* CURVE BACKGROUND IMAGE (FULL CARD) */}
-          <img
-            src={curve}
-            alt="Property Details Background"
-            className="absolute inset-0 w-full h-full object-full sm:object-contain select-none pointer-events-none"
-          />
-
-          <div className="relative z-10 flex flex-col h-full p-8 pr-0 pt-6 sm:pt-12">
-
-        {/* ---------- HEADER ROW ---------- */}
-        <div className="flex items-center">
-
-            <h3 className="text-md sm:text-2xl font-semibold">
-            Property Details
-            </h3>
-
-            {/* Status Badge */}
-            <div className="flex items-center gap-2 bg-[#2f3540] text-white px-4 py-1.5 rounded-tl-full rounded-bl-full text-xs  sm:text-sm ml-auto">
-            <span className="w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full"></span>
-            For Sale
             </div>
+          ))}
 
         </div>
 
+        {/* -------- ARROWS -------- */}
+        <div
+          className="
+            absolute
+            bottom-[10px]
+            sm:bottom-[50px]
+            right-[2px]
+            sm:right-[20px]
+            flex gap-4 z-20
+          "
+        >
 
-        {/* ---------- DETAILS PILLS ---------- */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mt-4 sm:mt-8 mr-6">
-
-            <DetailPill icon={<FiHome />} text="The Kensington Villa" />
-            <DetailPill icon={<FiMapPin />} text="Kensington, London" />
-            <DetailPill icon={<FaBed />} text="4 Bedrooms" />
-            <DetailPill icon={<TbRulerMeasure />} text="3,200 sq ft" />
-            <DetailPill icon={<FaBath />} text="2 Bathroom" />
-            <DetailPill icon={<FaCar />} text="2 Cars" />
-        </div>
-
-
-        {/* ---------- CTA BUTTON ---------- */}
-        <div className="mt-auto pt-8 ml-5 sm:ml-10">
-            <button className="bg-[#2f3540] text-white px-15 sm:px-35 py-3 rounded-full text-sm sm:text-lg hover:opacity-90 transition cursor-pointer">
-            Details
-            </button>
-        </div>
-
-        <div className="mt-auto pt-12">
-            <span className="text-[#2f3540] rounded-full text-2xl over:opacity-90 transition">
-            Price : £1,250,000
-            </span>
-        </div>
-
-
-        {/* ---------- ARROWS (POSITIONED IN CURVE) ---------- */}
-        <div className="absolute bottom-3 sm:bottom-4 right-0 sm:right-6 flex gap-4">
-
-            <button
-            onClick={() =>
-                setActiveImg(
-                (prev) => (prev - 1 + images.length) % images.length
-                )
-            }
-            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white/80 backdrop-blur hover:bg-black hover:text-white transition cursor-pointer"
-            >
+          <button
+            onClick={prev}
+            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white/80 backdrop-blur hover:bg-black hover:text-white transition"
+          >
             <FiArrowLeft />
-            </button>
+          </button>
 
-            <button
-            onClick={() =>
-                setActiveImg((prev) => (prev + 1) % images.length)
-            }
-            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white hover:bg-black hover:text-white transition cursor-pointer"
-            >
+          <button
+            onClick={next}
+            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white hover:bg-black hover:text-white transition"
+          >
             <FiArrowRight />
-            </button>
+          </button>
 
         </div>
-
-        </div>
-
-        </div>
-
       </div>
 
-      {/* ================= BOTTOM STATS ================= */}
+              {/* -------- DOTS -------- */}
+<div className="flex justify-center mt-10 gap-3">
+
+  {properties.map((_, i) => (
+    <button
+      key={i}
+      onClick={() => {
+        setIndex(i);
+        setActiveImg(0);
+      }}
+      className={`
+        transition-all duration-300
+        ${
+          index === i
+            ? "w-6 h-2 bg-black"
+            : "w-2 h-2 bg-gray-400 hover:bg-gray-600"
+        }
+        rounded-full
+      `}
+    />
+  ))}
+
+</div>
+
+      {/* ================= STATS ================= */}
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 mt-20 sm:mt-16 text-center">
 
         <Stat number="100%" label="Satisfactions Clients" border />
@@ -184,31 +195,8 @@ export default function PropertyAd() {
         <Stat number="150+" label="Countries & Cities" border />
         <Stat number="2,00+" label="Positive reviews" />
 
-        </div>
+      </div>
+
     </section>
   );
 }
-
-
-/* ================= REUSABLE STAT ================= */
-function Stat({ number, label, border }) {
-  return (
-    <div
-      className={`
-        flex flex-col items-center gap-2 px-6 py-5 sm:py-0
-        ${border ? "md:border-r md:border-gray-500" : ""}
-      `}
-    >
-
-      <h4 className="text-3xl sm:text-4xl font-semibold">
-        {number}
-      </h4>
-
-      <p className="text-gray-500 text-sm">
-        {label}
-      </p>
-
-    </div>
-  );
-}
-

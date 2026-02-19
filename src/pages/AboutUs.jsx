@@ -5,7 +5,7 @@ import DiagonalImage from "../components/DiagonalImage";
 
 const AboutUs = () => {
   return (
-    <section className="relative w-full min-h-screen bg-[#EEEEEE]/36 overflow-hidden">
+    <section className="relative w-full min-h-screen bg-[#EEEEEE]/36 font[prompt] overflow-hidden">
 
       <div className="flex flex-col md:flex-row min-h-screen">
 
