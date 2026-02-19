@@ -15,9 +15,9 @@ const services = [
 ];
 
 const Services = () => {
-  const [current, setCurrent] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [stage, setStage] = useState("idle");
   const [paused, setPaused] = useState(false);
-  const [animate, setAnimate] = useState(false);
 
   const total = services.length;
 
@@ -25,105 +25,100 @@ const Services = () => {
     if (paused) return;
 
     const interval = setInterval(() => {
-      setAnimate(true);
+
+      // Step 1: Hide right instantly
+      setStage("hideRight");
 
       setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % total);
+        // Step 2: Start movement + width grow
+        setStage("move");
+      }, 100);
 
-        // Instantly reset animation state after content swap
-        setAnimate(false);
-      }, 700); // match CSS duration
+      setTimeout(() => {
+        // Step 3: Reset
+        setIndex((prev) => (prev + 1) % total);
+        setStage("idle");
+      }, 900);
+
     }, 4000);
 
     return () => clearInterval(interval);
   }, [paused, total]);
 
-  const leftCard = services[current];
-  const rightCard = services[(current + 1) % total];
+  const leftCard = services[index];
+  const rightCard = services[(index + 1) % total];
+  const nextRight = services[(index + 2) % total];
 
   return (
-    <section className="w-full bg-[#EEEEEE]/36 py-20 px-6 lg:px-16 overflow-hidden">
+    <section className="w-full bg-[#EEEEEE]/36 py-10 px-6 lg:px-16 overflow-hidden">
 
-      {/* HEADER */}
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-10 mb-20">
-        <h1 className="text-[60px] lg:text-[90px] leading-[0.9] font-serif uppercase">
-          Our <br /> Services
-        </h1>
-
-        <div className="max-w-md">
-          <p className="text-gray-600 mb-8 text-lg">
-            Comprehensive property services designed to simplify letting,
-            management, and sales — delivered with expertise, integrity, and
-            results-driven strategies.
-          </p>
-          <button className="flex items-center gap-3 border border-black px-8 py-4 rounded-full hover:bg-black hover:text-white transition-all font-medium">
-            See Our Services ↗
-          </button>
-        </div>
-      </div>
-
-      {/* SLIDER */}
       <div
-        className="flex gap-8 w-full max-w-[1300px] mx-auto"
+        className="relative max-w-[1300px] mx-auto h-[560px]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        {/* LEFT BIG CARD */}
+
+        {/* LEFT CARD */}
         <div
-          className={`relative flex-[2.6] h-[560px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700`}
+          className="absolute top-0 left-0 h-full rounded-[40px] overflow-hidden shadow-2xl"
           style={{
-            transform: animate ? "translateX(-120px)" : "translateX(0px)",
-            transition: "transform 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
+            width: "68%",
+            opacity: stage === "move" ? 0 : 1,
+            transition: "opacity 0.4s ease",
           }}
         >
           <img
             src={leftCard.image}
-            alt={leftCard.title}
-            className={`w-full h-full object-cover transition-all duration-700 ${
-              animate ? "scale-105" : "scale-100"
-            }`}
+            alt=""
+            className="w-full h-full object-cover"
           />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-
-          <div className="absolute bottom-10 left-10 right-10">
-            <h3 className="text-white text-4xl font-medium leading-tight transition-all duration-500">
-              {leftCard.title}
-            </h3>
-          </div>
-
-          <div className="absolute top-8 right-8 bg-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform">
-            <span className="text-2xl text-black">↗</span>
-          </div>
         </div>
 
-        {/* RIGHT SMALL CARD */}
+        {/* RIGHT CARD (MOVE + WIDTH GROW) */}
         <div
-          className={`relative flex-[0.9] h-[560px] rounded-[40px] overflow-hidden shadow-2xl transition-all duration-700`}
+          className="absolute top-0 h-full rounded-[40px] overflow-hidden shadow-2xl"
           style={{
-            transform: animate ? "translateX(-200px)" : "translateX(0px)",
-            opacity: animate ? 0.7 : 1,
-            transition: "all 0.7s cubic-bezier(0.65, 0, 0.35, 1)",
+            left:
+              stage === "move"
+                ? "0%"
+                : "72%",
+            width:
+              stage === "move"
+                ? "68%"
+                : "28%",
+            opacity: stage === "hideRight" ? 0 : 1,
+            transition:
+              stage === "move"
+                ? "left 0.8s cubic-bezier(0.4,0,0.2,1), width 0.8s cubic-bezier(0.4,0,0.2,1)"
+                : "opacity 0.1s linear",
           }}
         >
           <img
             src={rightCard.image}
-            alt={rightCard.title}
-            className="w-full h-full object-cover transition-all duration-700"
+            alt=""
+            className="w-full h-full object-cover"
           />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-
-          <div className="absolute bottom-10 left-10 right-10">
-            <h3 className="text-white text-lg font-medium leading-tight transition-all duration-500">
-              {rightCard.title}
-            </h3>
-          </div>
-
-          <div className="absolute top-8 right-8 bg-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform">
-            <span className="text-2xl text-black">↗</span>
-          </div>
         </div>
+
+        {/* NEW RIGHT CARD */}
+        {/* NEW RIGHT CARD */}
+        {stage === "move" && (
+          <div
+            className="absolute top-0 h-full w-[28%] rounded-[40px] overflow-hidden shadow-2xl"
+            style={{
+              left: "100%",
+              animation: "slideIn 0.8s cubic-bezier(0.4,0,0.2,1) forwards",
+            }}
+          >
+            <img
+              src={nextRight.image}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+
       </div>
     </section>
   );

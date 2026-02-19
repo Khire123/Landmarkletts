@@ -44,7 +44,8 @@ const AboutUs = () => {
       </div>
 
       {/* FLOATING GLASS BUTTON — ORIGINAL STYLE */}
-      <div className="absolute bottom-8 sm:bottom-20 md:bottom-16 right-6 sm:right-12 md:right-24">
+      <div className="absolute bottom-24 sm:bottom-36 md:bottom-48 right-6 sm:right-12 md:right-24">
+
         <button
           className="
             px-10 py-3 rounded-full

@@ -196,3 +196,13 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* card sliding effect */
+@keyframes slideIn {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 72%;
+  }
+}
