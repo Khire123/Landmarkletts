@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Send,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 
 import ContactImage from "../assets/Contact.png"; // adjust path if needed
 
@@ -39,7 +33,6 @@ const Contact = () => {
 
   return (
     <section className="w-full bg-gradient-to-br from-[#f4f6f9] to-[#e9edf3] py-24 px-6 md:px-16">
-
       {/* HEADING */}
       <div className="text-center mb-14">
         <p className="text-sm uppercase tracking-widest text-blue-600 font-semibold mb-3">
@@ -47,8 +40,7 @@ const Contact = () => {
         </p>
 
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-          Let’s Start a{" "}
-          <span className="text-blue-600">Conversation</span>
+          Let’s Start a <span className="text-blue-600">Conversation</span>
         </h1>
 
         <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
@@ -59,10 +51,8 @@ const Contact = () => {
 
       {/* MAIN GRID */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        
         {/* LEFT FORM */}
         <div className="lg:col-span-2 bg-white rounded-2xl shadow-md p-8 relative overflow-hidden">
-
           <h2 className="text-lg font-semibold mb-6 text-gray-800">
             Send Us a Message
           </h2>
@@ -111,11 +101,11 @@ const Contact = () => {
 
           {/* Decorative Bottom Right Image */}
           <img
-  src={ContactImage}
-  alt="Contact Illustration"
-  className="
+            src={ContactImage}
+            alt="Contact Illustration"
+            className="
     absolute
-    -bottom-40
+    -bottom-
     right-0
     left-62
     w-[700px]
@@ -123,9 +113,7 @@ const Contact = () => {
     opacity-90
     pointer-events-none
   "
-/>
-
-
+          />
         </div>
 
         {/* RIGHT SIDE CARDS */}
@@ -138,20 +126,29 @@ const Contact = () => {
                 key={index}
                 className="group bg-white rounded-2xl shadow-md p-6 flex gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
-                <div className="p-3 rounded-lg bg-blue-100 text-blue-600 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-blue-500 group-hover:text-white">
-                  <Icon size={20} />
+                <div
+                  className="
+  w-12 h-12
+  flex items-center justify-center
+  rounded-xl
+  bg-blue-100
+  text-blue-600
+  transition-all duration-300
+  group-hover:bg-gradient-to-br
+  group-hover:from-blue-600
+  group-hover:to-blue-500
+  group-hover:text-white
+"
+                >
+                  <Icon size={22} />
                 </div>
 
                 <div>
                   <p className="text-xs uppercase tracking-wide text-gray-500 transition-all duration-300 group-hover:text-blue-600">
                     {item.title}
                   </p>
-                  <p className="font-semibold text-gray-800">
-                    {item.main}
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    {item.sub}
-                  </p>
+                  <p className="font-semibold text-gray-800">{item.main}</p>
+                  <p className="text-sm text-gray-500">{item.sub}</p>
                 </div>
               </div>
             );
@@ -162,7 +159,8 @@ const Contact = () => {
               Need urgent help?
             </p>
             <p className="text-sm text-gray-500 mb-3">
-              Book a free 15-minute consultation with one of our property experts.
+              Book a free 15-minute consultation with one of our property
+              experts.
             </p>
             <button className="text-blue-600 font-medium hover:underline">
               Book Now →
