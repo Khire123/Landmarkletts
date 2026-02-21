@@ -64,7 +64,7 @@ export default function PropertyAdCard({
           <img
             src={curve}
             alt="Property Details Background"
-            className="absolute inset-0 w-full h-full object-full sm:object-contain select-none pointer-events-none"
+            className="absolute inset-0 w-full h-full object-full sm:object-full lg:object-contain select-none pointer-events-none"
           />
 
           <div className="relative z-10 flex flex-col h-full p-8 pr-0 pt-6 sm:pt-12">
@@ -75,7 +75,7 @@ export default function PropertyAdCard({
                 Property Details
               </h3>
 
-              <div className="flex items-center gap-2 bg-[#2f3540] text-white px-4 py-1.5 rounded-tl-full rounded-bl-full text-xs sm:text-sm ml-auto">
+              <div className="flex items-center gap-2 bg-[#b28a4a] text-white tracking-[0.1em] font-semibold px-4 py-1.5 rounded-tl-full rounded-bl-full text-xs sm:text-sm ml-auto">
                 <span className="w-1 h-1 sm:w-2 sm:h-2 bg-white rounded-full"></span>
                 For Sale
               </div>
@@ -94,7 +94,7 @@ export default function PropertyAdCard({
 
             {/* BUTTON */}
             <div className="mt-auto pt-8 ml-5 sm:ml-10">
-              <button className="bg-[#34495E] text-white px-15 sm:px-35 py-3 rounded-full text-sm sm:text-lg hover:opacity-90 transition cursor-pointer">
+              <button className="bg-[#b28a4a] text-white font-semibold tracking-[0.1em] px-15 sm:px-35 py-3 rounded-full text-sm sm:text-lg hover:opacity-90 transition cursor-pointer">
                 Details
               </button>
             </div>

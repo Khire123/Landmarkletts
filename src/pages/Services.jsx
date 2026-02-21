@@ -18,8 +18,16 @@ const Services = () => {
   const [index, setIndex] = useState(0);
   const [stage, setStage] = useState("idle");
   const [paused, setPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const total = services.length;
+
+  useEffect(() => {
+  const handleResize = () => setIsMobile(window.innerWidth < 1024);
+  handleResize(); // Run once on mount
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   useEffect(() => {
     if (paused) return;
@@ -50,7 +58,7 @@ const Services = () => {
   const nextRight = services[(index + 2) % total];
 
   return (
-    <section className="w-full bg-[#EEEEEE]/36 py-10 px-6 lg:px-16 overflow-hidden font-[prompt]">
+    <section className="w-full bg-[#f4f1ea] py-10 px-6 lg:px-16 overflow-hidden font-[prompt]">
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 mb-12">
 
@@ -67,7 +75,7 @@ const Services = () => {
         </p>
 
         {/* ---- BUTTON ---- */}
-        <button className="group flex items-center justify-between border-2 border-gray-500 rounded-full px-6 py-3 w-[260px] sm:w-[300px] hover:border-black transition">
+        <button className="group flex items-center justify-between border-2 border-gray-500 rounded-full px-6 py-3 w-[260px] sm:w-[300px] hover:bg-[#b28a4a] hover:border-black transition">
 
           <span className="text-black text-sm sm:text-base">
             See Our Services
@@ -96,7 +104,7 @@ const Services = () => {
         <div
           className="absolute top-0 left-0 h-full rounded-[40px] overflow-hidden shadow-2xl"
           style={{
-            width: "68%",
+            width: isMobile ? "100%" : "68%",
             opacity: stage === "move" ? 0 : 1,
             transition: "opacity 0.4s ease",
           }}
@@ -137,7 +145,7 @@ const Services = () => {
 
 
         <div
-        className="absolute top-0 h-full rounded-[40px] overflow-hidden shadow-2xl"
+        className="hidden sm:block absolute top-0 h-full rounded-[40px] overflow-hidden shadow-2xl"
         style={{
           left: stage === "move" ? "0%" : "72%",
           width: stage === "move" ? "68%" : "28%",
@@ -178,9 +186,8 @@ const Services = () => {
       </div>
 
 
-        {/* NEW RIGHT CARD */}
-        {/* NEW RIGHT CARD */}
-        {stage === "move" && (
+        {/* Only show the third peeking card on Desktop */}
+        {!isMobile && stage === "move" && (
           <div
             className="absolute top-0 h-full w-[28%] rounded-[40px] overflow-hidden shadow-2xl"
             style={{
@@ -188,11 +195,7 @@ const Services = () => {
               animation: "slideIn 0.8s cubic-bezier(0.4,0,0.2,1) forwards",
             }}
           >
-            <img
-              src={nextRight.image}
-              alt=""
-              className="w-full h-full object-cover"
-            />
+            <img src={nextRight.image} alt="" className="w-full h-full object-cover" />
           </div>
         )}
 

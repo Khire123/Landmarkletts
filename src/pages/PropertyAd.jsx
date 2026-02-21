@@ -93,7 +93,7 @@ export default function PropertyAd() {
     );
   }
   return (
-    <section className="w-full bg-[#EEEEEE]/36 py-16 px-6 md:px-12 lg:px-20 font-[prompt]">
+    <section className="w-full bg-[#f4f1ea] py-16 px-6 md:px-12 lg:px-20 font-[prompt]">
 
       {/* HEADING */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 mb-12">
@@ -139,7 +139,7 @@ export default function PropertyAd() {
           className="
             absolute
             bottom-[10px]
-            sm:bottom-[50px]
+            lg:bottom-[50px]
             right-[2px]
             sm:right-[20px]
             flex gap-4 z-20
@@ -148,14 +148,14 @@ export default function PropertyAd() {
 
           <button
             onClick={prev}
-            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white/80 backdrop-blur hover:bg-black hover:text-white transition"
+            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black hover:border-[#b28a4a] flex items-center justify-center bg-white/80 backdrop-blur hover:bg-[#b28a4a] hover:text-white transition"
           >
             <FiArrowLeft />
           </button>
 
           <button
             onClick={next}
-            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black flex items-center justify-center bg-white hover:bg-black hover:text-white transition"
+            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black hover:border-[#b28a4a] flex items-center justify-center bg-white hover:bg-[#b28a4a] hover:text-white transition"
           >
             <FiArrowRight />
           </button>

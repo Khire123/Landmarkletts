@@ -1,185 +1,137 @@
 import React from "react";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-
-import ContactImage from "../assets/Contact.png"; // adjust path if needed
+import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from "lucide-react";
+import ContactImage from "../assets/Contact.png"; 
 
 const Contact = () => {
   const cards = [
-    {
-      icon: Phone,
-      title: "Call Us",
-      main: "+44 20 7946 0958",
-      sub: "Mon–Fri, 9am–6pm",
-    },
-    {
-      icon: Mail,
-      title: "Email Us",
-      main: "hello@youragency.co.uk",
-      sub: "We reply within 24 hours",
-    },
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      main: "42 King Street, London EC2V 8AT",
-      sub: "By appointment only",
-    },
-    {
-      icon: Clock,
-      title: "Working Hours",
-      main: "Mon – Fri: 9:00 – 18:00",
-      sub: "Sat: 10:00 – 14:00",
-    },
+    { icon: Phone, title: "Call Us", main: "+44 20 7946 0958", sub: "Mon–Fri, 9am–6pm" },
+    { icon: Mail, title: "Email Us", main: "hello@youragency.co.uk", sub: "We reply within 24 hours" },
+    { icon: MapPin, title: "Visit Us", main: "42 King Street, London", sub: "By appointment only" },
+    { icon: Clock, title: "Working Hours", main: "Mon – Fri: 9:00 – 18:00", sub: "Sat: 10:00 – 14:00" },
   ];
 
   return (
-    <section className="w-full bg-[#EEEEEE]/36 py-24 px-6 md:px-16">
-      {/* HEADING */}
-      <div className="text-center mb-14">
-        <p className="text-sm uppercase tracking-widest text-blue-600 font-semibold mb-3">
+    <section className="w-full bg-[#f4f1ea] py-24 px-6 md:px-16 font-[prompt]">
+      {/* HEADING SECTION */}
+      <div className="text-center mb-20">
+        <span className="text-white text-[12px] font-bold tracking-[0.3em] uppercase bg-[#b28a4a] px-6 py-2 rounded-full shadow-sm">
           Get In Touch
-        </p>
-
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
-          Let’s Start a <span className="text-blue-600">Conversation</span>
+        </span>
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mt-6 leading-tight">
+          Let’s Start a <span className="text-[#b28a4a]">Conversation</span>
         </h1>
-
-        <p className="mt-4 text-gray-500 max-w-2xl mx-auto">
+        <p className="mt-6 text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed font-light">
           Whether you're buying, selling, or investing — we're here to help you
           make confident property decisions.
         </p>
       </div>
 
       {/* MAIN GRID */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {/* LEFT FORM */}
-        <div className="lg:col-span-2 bg-white rounded-2xl shadow-md p-8 relative overflow-hidden">
-          <h2 className="text-lg font-semibold mb-6 text-gray-800">
-            Send Us a Message
-          </h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+        
+        {/* LEFT COLUMN: FORM */}
+        <div className="lg:col-span-2 bg-white rounded-[32px] shadow-[0_20px_50px_rgba(178,138,74,0.08)] p-10 md:p-14 relative overflow-hidden border border-[#b28a4a]/10">
+          <div className="relative z-10">
+            <h2 className="text-2xl font-bold mb-8 text-[#2E3540]">Send Us a Message</h2>
 
-          <form className="space-y-5">
-            <div className="grid md:grid-cols-2 gap-5">
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
                 type="text"
-                placeholder="Name"
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Full Name"
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-[#b28a4a]/20 focus:bg-white transition-all text-gray-700"
               />
               <input
                 type="email"
-                placeholder="Email"
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-5">
-              <input
-                type="text"
-                placeholder="Phone no."
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Email Address"
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-[#b28a4a]/20 focus:bg-white transition-all text-gray-700"
               />
               <input
                 type="text"
-                placeholder="Property enquiry"
-                className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Phone Number"
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-[#b28a4a]/20 focus:bg-white transition-all text-gray-700"
               />
-            </div>
+              <input
+                type="text"
+                placeholder="Property Inquiry Type"
+                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-[#b28a4a]/20 focus:bg-white transition-all text-gray-700"
+              />
+              <textarea
+                rows="5"
+                placeholder="Tell us about your property goals..."
+                className="w-full md:col-span-2 bg-gray-50 border border-gray-100 rounded-xl px-6 py-4 outline-none focus:ring-2 focus:ring-[#b28a4a]/20 focus:bg-white transition-all resize-none text-gray-700"
+              />
+              
+              <div className="md:col-span-2">
+                <button
+                  type="submit"
+                  className="group flex items-center gap-3 bg-[#b28a4a] hover:bg-[#9a763d] text-white px-10 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-[#b28a4a]/20 active:scale-95"
+                >
+                  Send Message
+                  <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </button>
+              </div>
+            </form>
+          </div>
 
-            <textarea
-              rows="5"
-              placeholder="Tell us about your property goals..."
-              className="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-
-            <button
-              type="submit"
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300"
-            >
-              Send Message
-              <Send size={18} />
-            </button>
-          </form>
-
-          {/* Decorative Bottom Right Image */}
+          {/* REFINED ILLUSTRATION PLACEMENT */}
           <img
             src={ContactImage}
-            alt="Contact Illustration"
-            className="
-    absolute
-    -bottom-
-    right-0
-    left-62
-    w-[700px]
-    max-w-none
-    opacity-90
-    pointer-events-none
-  "
+            alt=""
+            className="hidden xl:block absolute -bottom-30 -right-20 w-[550px]  pointer-events-none"
           />
         </div>
 
-        {/* RIGHT SIDE CARDS */}
-        <div className="space-y-6">
-          {cards.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <div
-                key={index}
-                className="group bg-white rounded-2xl shadow-md p-6 flex gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-              >
-                <div
-                  className="
-  w-12 h-12
-  flex items-center justify-center
-  rounded-xl
-  bg-blue-100
-  text-blue-600
-  transition-all duration-300
-  group-hover:bg-gradient-to-br
-  group-hover:from-blue-600
-  group-hover:to-blue-500
-  group-hover:text-white
-"
-                >
-                  <Icon size={22} />
-                </div>
-
-                <div>
-                  <p className="text-xs uppercase tracking-wide text-gray-500 transition-all duration-300 group-hover:text-blue-600">
-                    {item.title}
-                  </p>
-                  <p className="font-semibold text-gray-800">{item.main}</p>
-                  <p className="text-sm text-gray-500">{item.sub}</p>
-                </div>
+        {/* RIGHT COLUMN: CARDS */}
+        <div className="flex flex-col gap-6">
+          {cards.map((item, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-2xl p-6 flex items-center gap-5 border border-[#b28a4a]/5 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#b28a4a]/30"
+            >
+              <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center rounded-2xl bg-[#b28a4a]/10 text-[#b28a4a] group-hover:bg-[#b28a4a] group-hover:text-white transition-all duration-300">
+                <item.icon size={26} />
               </div>
-            );
-          })}
 
-          <div className="group bg-white rounded-2xl shadow-md p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-            <p className="font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition duration-300">
-              Need urgent help?
-            </p>
-            <p className="text-sm text-gray-500 mb-3">
-              Book a free 15-minute consultation with one of our property
-              experts.
-            </p>
-            <button className="text-blue-600 font-medium hover:underline">
-              Book Now →
-            </button>
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1">
+                  {item.title}
+                </p>
+                <p className="font-bold text-[#2E3540] text-sm md:text-base">
+                  {item.main}
+                </p>
+                <p className="text-xs text-gray-500 mt-0.5 font-light">{item.sub}</p>
+              </div>
+            </div>
+          ))}
+
+          {/* URGENT CTA CARD: Now in Brand Charcoal */}
+          <div className="bg-[#2E3540] rounded-2xl p-8 text-white shadow-xl relative overflow-hidden group">
+            <div className="relative z-10">
+              <p className="font-bold text-lg mb-2">Need urgent help?</p>
+              <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                Book a free 15-minute consultation with one of our property experts.
+              </p>
+              <button className="flex items-center gap-2 font-bold text-[#b28a4a] text-xs uppercase tracking-widest hover:gap-4 transition-all group-hover:text-white">
+                Book Now <ArrowRight size={16} />
+              </button>
+            </div>
+            {/* Gold Glow Accent */}
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#b28a4a]/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
           </div>
         </div>
       </div>
 
-      {/* GOOGLE MAP */}
-      <div className="max-w-7xl mx-auto mt-16">
-        <div className="rounded-2xl overflow-hidden shadow-md">
+      {/* MAP SECTION */}
+      <div className="max-w-7xl mx-auto mt-20">
+        <div className="rounded-[32px] overflow-hidden shadow-2xl border-[12px] border-white">
           <iframe
             title="location"
-            src="https://www.google.com/maps?q=42+King+Street+London+EC2V+8AT&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.9050207917!2d-0.093496023369528!3d51.51494727181515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb4df797825%3A0xe67531776510368c!2s42%20King%20St%2C%20London%20EC2V%208AS!5e0!3m2!1sen!2suk!4v1709220000000!5m2!1sen!2suk"
             width="100%"
-            height="350"
+            height="450"
+            style={{ filter: "grayscale(0.6) contrast(1.1) brightness(0.9)" }}
             loading="lazy"
             className="border-0"
-            allowFullScreen=""
           ></iframe>
         </div>
       </div>

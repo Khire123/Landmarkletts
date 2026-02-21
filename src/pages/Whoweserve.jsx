@@ -29,110 +29,106 @@ const data = [
   },
 ];
 
-const Card = ({ item }) => {
+const Card = ({ item, className = "" }) => {
   return (
     <div
-      className="
-        relative
-        bg-white
-        rounded-2xl
-        p-8
-        shadow-sm
-        border border-transparent
-        overflow-hidden
-        transition-all duration-300
-        hover:-translate-y-2
-        hover:shadow-lg
-        hover:border-[#2E3540]/40
-        h-full
-        group
-      "
+      className={`
+        relative group h-full
+        bg-white rounded-3xl p-8
+        border border-[#b28a4a]/10
+        transition-all duration-500 ease-out
+        hover:shadow-[0_20px_50px_rgba(178,138,74,0.15)]
+        hover:border-[#b28a4a]/50
+        hover:-translate-y-1
+        flex flex-col
+        ${className}
+      `}
     >
-
-      {/* ---- HOVER TEXTURE / TINT ---- */}
-      <div
-        className="
-          absolute inset-0
-          opacity-0
-          group-hover:opacity-100
-          transition duration-500
-          bg-gradient-to-br
-          from-[#2E3540]/5
-          via-transparent
-          to-[#2E3540]/10
-          pointer-events-none
-        "
+      {/* --- UPDATED GRADIENT: Warm Gold/Ivory Glow --- */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-[#b28a4a]/[0.3] via-transparent to-[#f4f1ea] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" 
       />
 
-      {/* CONTENT */}
       <div className="relative z-10">
-
-        {/* Icon */}
-        <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-[#2E3540]/10 text-[#2E3540] mb-6 transition duration-300 group-hover:bg-[#2E3540]/20">
+        {/* --- UPDATED ICON: Matches the b28a4a Gold --- */}
+        <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-[#b28a4a]/10 text-[#b28a4a] mb-8 transition-all duration-500 group-hover:scale-110 group-hover:bg-[#b28a4a] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#b28a4a]/30">
           {item.icon}
         </div>
 
-        {/* Title */}
-        <h3 className="text-lg font-semibold text-[#2E3540] mb-4">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 tracking-tight">
           {item.title}
         </h3>
 
-        {/* Description */}
-        <p className="text-gray-600 text-sm leading-relaxed">
+        <p className="text-gray-500 text-sm md:text-base leading-relaxed font-light">
           {item.desc}
         </p>
+      </div>
 
+      {/* Decorative Arrow */}
+      <div className="mt-auto pt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
+        <span className="text-xs font-bold text-[#b28a4a] uppercase tracking-widest flex items-center gap-2">
+          Learn More <span className="text-lg">→</span>
+        </span>
       </div>
     </div>
   );
 };
 
-
-
-
 const Whoweserve = () => {
   return (
-    <section className="w-full bg-gradient-to-br bg-[#EEEEEE]/36 font[prompt] py-24 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Small Heading */}
-        <p className="text-sm tracking-widest text-[#2E3540] font-semibold mb-4">
-          WHO WE SERVE
-        </p>
-
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+    <section className="w-full bg-[#f4f1ea] py-24 px-6 font-[prompt] overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header Section */}
+        <div className="flex flex-col items-center text-center mb-20">
+          <span className="px-4 py-1.5 rounded-full bg-[#b28a4a] text-white text-[15px] font-bold tracking-[0.2em] uppercase mb-6">
+            Who We Serve
+          </span>
+          
+          <h1 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.1] max-w-4xl">
             Tailored solutions for{" "}
             <span
-              className="text-white italic"
-              style={{ WebkitTextStroke: "2px black" }}
+              className="italic font-serif"
+              style={{ 
+                WebkitTextStroke: "1px #b28a4a", 
+                color: "transparent",
+                padding: "0 4px"
+              }}
             >
               every
             </span>{" "}
             property need.
           </h1>
 
-        {/* Subtitle */}
-        <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
-          No matter where you are in your property journey, we have the
-          expertise to help you succeed.
-        </p>
+          <p className="text-gray-500 mt-8 max-w-xl text-lg font-light leading-relaxed">
+            No matter where you are in your property journey, we have the
+            expertise to help you succeed.
+          </p>
+        </div>
 
-        {/* Cards Section */}
-        <div className="mt-16 space-y-8">
-          {/* First Row - 3 Cards */}
-          <div className="grid gap-8 md:grid-cols-3">
-            {data.slice(0, 3).map((item, index) => (
-              <Card key={index} item={item} />
-            ))}
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+          
+          {/* Row 1 */}
+          <div className="lg:col-span-2">
+            <Card item={data[0]} />
+          </div>
+          <div className="lg:col-span-2">
+            <Card item={data[1]} />
+          </div>
+          <div className="lg:col-span-2">
+            <Card item={data[2]} />
           </div>
 
-          {/* Second Row - 2 Cards Centered */}
-          <div className="flex flex-col md:flex-row justify-center gap-8">
-            {data.slice(3, 5).map((item, index) => (
-              <div className="w-full md:w-[31%]" key={index}>
-                <Card item={item} />
-              </div>
-            ))}
+          {/* Row 2 - Centered on large screens by using empty spacers or span math */}
+          {/* We make the last two cards wider to fill the space elegantly */}
+          <div className="lg:col-start-2 lg:col-span-2">
+            <Card item={data[3]} />
           </div>
+          <div className="lg:col-span-2">
+            <Card item={data[4]} />
+          </div>
+
         </div>
       </div>
     </section>

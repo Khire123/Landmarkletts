@@ -130,7 +130,8 @@ const Footer = () => {
 
           {/* Glass Newsletter Card */}
           <div className="
-            p-6
+            lg:p-6
+            p-4
             rounded-2xl
             bg-white/60
             backdrop-blur-lg
