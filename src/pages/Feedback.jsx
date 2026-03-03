@@ -1,12 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 
+// const testimonials = [
+//   { text: `"Lorem ipsum 1..."`, name: "Name 1", position: "CEO, Tech", rating: 5 },
+//   { text: `"Lorem ipsum 2..."`, name: "Name 2", position: "Manager, Creative", rating: 3 },
+//   { text: `"Lorem ipsum 3..."`, name: "Name 3", position: "Dev, Soft", rating: 4 },
+//   { text: `"Lorem ipsum 4..."`, name: "Name 4", position: "HR, People", rating: 2 },
+//   { text: `"Lorem ipsum 5..."`, name: "Name 5", position: "Lead, Design", rating: 5 },
+// ];
 const testimonials = [
-  { text: `"Lorem ipsum 1..."`, name: "Name 1", position: "CEO, Tech", rating: 5 },
-  { text: `"Lorem ipsum 2..."`, name: "Name 2", position: "Manager, Creative", rating: 3 },
-  { text: `"Lorem ipsum 3..."`, name: "Name 3", position: "Dev, Soft", rating: 4 },
-  { text: `"Lorem ipsum 4..."`, name: "Name 4", position: "HR, People", rating: 2 },
-  { text: `"Lorem ipsum 5..."`, name: "Name 5", position: "Lead, Design", rating: 5 },
+  { 
+    text: "I was honestly nervous about buying my first home, but the entire process was made simple and stress-free. The website listings were accurate, and the agent guided us at every step until registration day.", 
+    name: "Rahul Patil", 
+    position: "Home Buyer", 
+    rating: 5 
+  },
+  { 
+    text: "We sold our flat within 3 weeks! The property photos, pricing strategy, and constant follow-ups made a huge difference. Highly professional and transparent service.", 
+    name: "Neha Sharma", 
+    position: "Property Seller", 
+    rating: 4
+  },
+  { 
+    text: "What I liked the most was the honest advice. They didn’t just push expensive properties but actually understood our budget and needs. The website filters made searching very easy.", 
+    name: "Imran Shaikh", 
+    position: "Apartment Buyer", 
+    rating: 4 
+  },
+  { 
+    text: "As an NRI investor, I needed someone trustworthy. The virtual tours and clear documentation support helped me close the deal without even visiting India. Truly reliable team.", 
+    name: "Farah Khan", 
+    position: "NRI Investor", 
+    rating: 5
+  },
+  { 
+    text: "From property visits to loan assistance, everything was handled smoothly. Communication was always clear and quick. I would definitely recommend them to my friends and family.", 
+    name: "Vikram Desai", 
+    position: "First-Time Home Buyer", 
+    rating: 5 
+  },
 ];
 
 const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials];
