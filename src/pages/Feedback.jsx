@@ -85,7 +85,15 @@ const Feedback = () => {
 
       <div className="relative z-10 text-center">
         <h2 className="text-3xl md:text-5xl font-medium text-[#2E3540] mb-12 px-4">
-          What <span className="underline decoration-orange-500 underline-offset-4">Our Clients</span> Are Saying
+          What{" "} <span
+              className="italic font-serif"
+              style={{ 
+                WebkitTextStroke: "1px #b28a4a", 
+                color: "transparent",
+                padding: "0 4px"
+              }}
+            >Our Clients</span>{" "} 
+            Are Saying
         </h2>
 
         {/* Wrapper constraints:

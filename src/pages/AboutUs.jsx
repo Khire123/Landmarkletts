@@ -26,14 +26,14 @@ const AboutUs = () => {
             </p>
 
             {/* TAGLINE */}
-            <div className="mt-10 md:mt-60 -ml-6 sm:-ml-10 md:-ml-16 lg:-ml-24">
-              <div className="bg-[#b28a4a] text-white font-semibold text-xs sm:text-sm px-6 sm:px-8 py-2.5 rounded-br-full rounded-tr-full shadow-lg inline-flex items-center">
-                <span>
-                  Your goals are our priority — and your success is our mission.
-                </span>
-                <span className="ml-4 w-2.5 h-2.5 bg-white rounded-full"></span>
-              </div>
+            <div className="absolute md:relative mt-75 md:mt-60 -ml-6 sm:-ml-10 md:-ml-16 lg:-ml-24 z-10">
+            <div className="bg-[#b28a4a] text-white font-semibold text-[10px] sm:text-sm px-6 sm:px-8 py-2.5 rounded-br-full rounded-tr-full shadow-lg inline-flex items-center">
+              <span>
+                Your goals are our priority — and your success is our mission.
+              </span>
+              <span className="ml-4 w-2.5 h-2.5 bg-white rounded-full"></span>
             </div>
+          </div>
 
           </div>
         </div>
@@ -44,11 +44,11 @@ const AboutUs = () => {
       </div>
 
       {/* FLOATING GLASS BUTTON — ORIGINAL STYLE */}
-      <div className="absolute bottom-24 sm:bottom-36 md:bottom-48 right-6 sm:right-12 md:right-24">
+      <div className="absolute bottom-80 md:bottom-36 md:bottom-48 right-6 sm:right-12 md:right-24">
 
         <button
           className="
-            px-10 py-3 rounded-full
+            px-5 py-2 sm:px-10 sm:py-3 rounded-full
             bg-white/40 backdrop-blur-lg
             border border-white/50
             text-black font-medium
@@ -57,6 +57,8 @@ const AboutUs = () => {
             hover:border-[#b28a4a]
             hover:text-white
             transition duration-300
+            text-xs
+            sm:text-base
           "
         >
           View More

@@ -111,57 +111,53 @@ export default function PropertyAd() {
       </div>
 
       {/* ================= SLIDER WRAPPER ================= */}
-      <div className="max-w-7xl mx-auto relative overflow-hidden">
-
-        {/* SLIDING TRACK */}
-       <div
-        className="flex transition-transform duration-700 ease-in-out -mx-6"
-        style={{ transform: `translateX(-${index * 100}%)` }}
-      >
-
-          {properties.map((property, i) => (
-            <div key={i} className="min-w-full px-6">
-
-              <PropertyAdCard
-                property={property}
-                activeImg={activeImg}
-                setActiveImg={setActiveImg}
-              />
-
-
-            </div>
-          ))}
-
+<div className="max-w-7xl mx-auto relative">
+  {/* OVERFLOW HIDDEN CONTAINER */}
+  <div className="overflow-hidden">
+    <div
+      className="flex transition-transform duration-700 ease-in-out"
+      style={{ transform: `translateX(-${index * 100}%)` }}
+    >
+      {properties.map((property, i) => (
+        <div key={i} className="min-w-full">
+          <PropertyAdCard
+            property={property}
+            activeImg={activeImg}
+            setActiveImg={setActiveImg}
+          />
         </div>
+      ))}
+    </div>
+  </div>
 
-        {/* -------- ARROWS -------- */}
-        <div
-          className="
-            absolute
-            bottom-[10px]
-            lg:bottom-[50px]
-            right-[2px]
-            sm:right-[20px]
-            flex gap-4 z-20
-          "
-        >
+  {/* -------- ARROWS POSITIONED FOR THE CURVE GAP -------- */}
+  <div
+    className="
+      absolute 
+      /* Mobile positioning (bottom right) */
+      bottom-[70px] right-[10px]
+      /* Tablet positioning */
+      sm:bottom-[80px] sm:right-[30px]
+      /* Desktop positioning - exactly in the gap */
+      lg:bottom-[85px] lg:right-[30px] 
+      flex gap-3 z-30
+    "
+  >
+    <button
+      onClick={prev}
+      className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center bg-white shadow-sm hover:border-[#b28a4a] hover:bg-[#b28a4a] hover:text-white transition-all cursor-pointer"
+    >
+      <FiArrowLeft size={20} />
+    </button>
 
-          <button
-            onClick={prev}
-            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black hover:border-[#b28a4a] flex items-center justify-center bg-white/80 backdrop-blur hover:bg-[#b28a4a] hover:text-white transition"
-          >
-            <FiArrowLeft />
-          </button>
-
-          <button
-            onClick={next}
-            className="w-6 h-6 sm:w-10 sm:h-10 rounded-full border border-black hover:border-[#b28a4a] flex items-center justify-center bg-white hover:bg-[#b28a4a] hover:text-white transition"
-          >
-            <FiArrowRight />
-          </button>
-
-        </div>
-      </div>
+    <button
+      onClick={next}
+      className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center bg-white shadow-sm hover:border-[#b28a4a] hover:bg-[#b28a4a] hover:text-white transition-all cursor-pointer"
+    >
+      <FiArrowRight size={20} />
+    </button>
+  </div>
+</div>
 
               {/* -------- DOTS -------- */}
 <div className="flex justify-center mt-10 gap-3">
