@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+
 import img1 from "../assets/ourservice_img1.png";
 import img2 from "../assets/ourservice_img2.png";
 import img3 from "../assets/ourservice_img3.png";
@@ -15,6 +17,7 @@ const services = [
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const [stage, setStage] = useState("idle");
   const [paused, setPaused] = useState(false);
@@ -62,7 +65,7 @@ const Services = () => {
   // --- Touch Event Handlers ---
   const onTouchStart = (e) => {
     setPaused(true); // Stop auto-play on touch
-    touchEndX.current = null; 
+    touchEndX.current = null;
     touchStartX.current = e.targetTouches[0].clientX;
   };
 
@@ -99,12 +102,15 @@ const Services = () => {
 
         <div className="max-w-lg flex flex-col gap-6">
           <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-            Comprehensive property services designed to simplify letting, management, 
-            and sales — delivered with expertise, integrity, and results-driven strategies.
+            Comprehensive property services designed to simplify letting,
+            management, and sales — delivered with expertise, integrity, and
+            results-driven strategies.
           </p>
 
           <button className="group flex items-center justify-between border-2 border-gray-500 rounded-full px-6 py-3 w-[260px] sm:w-[300px] hover:bg-[#b28a4a] hover:border-black transition">
-            <span className="text-black text-sm sm:text-base">See Our Services</span>
+            <span className="text-black text-sm sm:text-base">
+              See Our Services
+            </span>
             <span className="ml-4 flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 group-hover:bg-black transition">
               <FiArrowUpRight className="text-black group-hover:text-white transition text-3xl" />
             </span>
@@ -129,10 +135,23 @@ const Services = () => {
             transition: "opacity 0.4s ease",
           }}
         >
-          <img src={leftCard.image} alt="" className="w-full h-full object-cover select-none" />
+          <img
+            src={leftCard.image}
+            alt=""
+            className="w-full h-full object-cover select-none"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
           <div className="absolute top-6 right-6 z-20">
-            <button className="w-12 h-12 rounded-full border border-white/40 bg-white/40 backdrop-blur-md flex items-center justify-center hover:bg-black group transition">
+            <button
+              onClick={() => {
+                if (
+                  leftCard.title === "Property Letting & Tenant Referencing"
+                ) {
+                  navigate("/tenant");
+                }
+              }}
+              className="w-12 h-12 rounded-full border border-white/40 bg-white/40 backdrop-blur-md flex items-center justify-center hover:bg-black group transition"
+            >
               <FiArrowUpRight className="text-black group-hover:text-white transition text-3xl" />
             </button>
           </div>
@@ -157,13 +176,17 @@ const Services = () => {
                   : "opacity 0.1s linear",
             }}
           >
-            <img src={rightCard.image} alt="" className="w-full h-full object-cover select-none" />
+            <img
+              src={rightCard.image}
+              alt=""
+              className="w-full h-full object-cover select-none"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
             <div className="absolute top-6 right-6 z-20">
-            <button className="w-12 h-12 rounded-full border border-white/40 bg-white/40 backdrop-blur-md flex items-center justify-center hover:bg-black group transition">
-              <FiArrowUpRight className="text-black group-hover:text-white transition text-3xl" />
-            </button>
-          </div>
+              <button className="w-12 h-12 rounded-full border border-white/40 bg-white/40 backdrop-blur-md flex items-center justify-center hover:bg-black group transition">
+                <FiArrowUpRight className="text-black group-hover:text-white transition text-3xl" />
+              </button>
+            </div>
             <div className="absolute bottom-6 left-6 right-6">
               <h3 className="text-white text-sm sm:text-lg font-medium leading-snug">
                 {rightCard.title}
@@ -181,7 +204,11 @@ const Services = () => {
               animation: "slideIn 0.8s cubic-bezier(0.4,0,0.2,1) forwards",
             }}
           >
-            <img src={nextRight.image} alt="" className="w-full h-full object-cover" />
+            <img
+              src={nextRight.image}
+              alt=""
+              className="w-full h-full object-cover"
+            />
           </div>
         )}
       </div>
@@ -196,7 +223,9 @@ const Services = () => {
               setStage("idle");
             }}
             className={`transition-all duration-300 rounded-full ${
-              index === i ? "w-8 h-2 bg-black" : "w-2 h-2 bg-gray-400 hover:bg-gray-600"
+              index === i
+                ? "w-8 h-2 bg-black"
+                : "w-2 h-2 bg-gray-400 hover:bg-gray-600"
             }`}
           />
         ))}

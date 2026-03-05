@@ -9,6 +9,7 @@ import Whoweserve from "./pages/Whoweserve";
 import Feedback from "./pages/Feedback";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
+import Tenant from "./pages/Tenant";
 
 /* 
   This stack makes everything appear in ONE scroll page.
@@ -28,19 +29,17 @@ const HomeStack = () => {
     </>
   );
 };
-
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeStack />} />
+        <Route path="/tenant" element={<Tenant />} />
       </Routes>
 
-      {/* Footer will appear on all routes */}
       <Footer />
     </BrowserRouter>
   );
 }
-
 
 export default App;
