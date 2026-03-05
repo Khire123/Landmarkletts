@@ -1,13 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Star } from "lucide-react";
 
-// const testimonials = [
-//   { text: `"Lorem ipsum 1..."`, name: "Name 1", position: "CEO, Tech", rating: 5 },
-//   { text: `"Lorem ipsum 2..."`, name: "Name 2", position: "Manager, Creative", rating: 3 },
-//   { text: `"Lorem ipsum 3..."`, name: "Name 3", position: "Dev, Soft", rating: 4 },
-//   { text: `"Lorem ipsum 4..."`, name: "Name 4", position: "HR, People", rating: 2 },
-//   { text: `"Lorem ipsum 5..."`, name: "Name 5", position: "Lead, Design", rating: 5 },
-// ];
 const testimonials = [
   { 
     text: "I was honestly nervous about buying my first home, but the entire process was made simple and stress-free. The website listings were accurate, and the agent guided us at every step until registration day.", 
@@ -47,10 +40,14 @@ const Feedback = () => {
   const [index, setIndex] = useState(testimonials.length);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [viewMode, setViewMode] = useState("desktop");
+  const [paused, setPaused] = useState(false);
+
+  // Swipe refs
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
-      // Laptop is 1024px+
       if (window.innerWidth < 1024) setViewMode("mobile"); 
       else setViewMode("desktop");
     };
@@ -59,16 +56,18 @@ const Feedback = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Auto-slide logic with Pause check
   useEffect(() => {
+    if (paused) return; // Stop interval if hovered or touched
+
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setIndex((prev) => prev + 1);
+      handleNext();
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [paused, index]);
 
   useEffect(() => {
-    // Jump back to the middle set for seamless looping
+    // Infinite loop jump-back logic
     if (index === testimonials.length * 2) {
       setTimeout(() => {
         setIsTransitioning(false);
@@ -83,24 +82,54 @@ const Feedback = () => {
     }
   }, [index]);
 
-  const realIndex = index % testimonials.length;
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    setIsTransitioning(true);
+    setIndex((prev) => prev - 1);
+  };
 
   const handleDotClick = (i) => {
     setIsTransitioning(true);
     setIndex(testimonials.length + i);
   };
 
+  // --- Swipe Handlers ---
+  const onTouchStart = (e) => {
+    setPaused(true);
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    setPaused(false);
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+    
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   const getTransform = () => {
     if (viewMode === "mobile") {
-      // Mobile/Tablet: Single card takes 100% of container. 
-      // Slide exactly by 100% * index.
       return `translateX(-${index * 100}%)`;
     } else {
-      // Desktop: 3 cards. To center the 'active' card, 
-      // we shift the whole row by 1 card width (33.33%)
       return `translateX(-${(index - 1) * 33.3333}%)`;
     }
   };
+
+  const realIndex = index % testimonials.length;
 
   return (
     <section className="relative w-full py-20 bg-[#f4f1ea] overflow-hidden">
@@ -117,22 +146,26 @@ const Feedback = () => {
 
       <div className="relative z-10 text-center">
         <h2 className="text-3xl md:text-5xl font-medium text-[#2E3540] mb-12 px-4">
-          What{" "} <span
-              className="italic font-serif"
-              style={{ 
-                WebkitTextStroke: "1px #b28a4a", 
-                color: "transparent",
-                padding: "0 4px"
-              }}
-            >Our Clients</span>{" "} 
-            Are Saying
+          What{" "} 
+          <span
+            className="italic font-serif"
+            style={{ 
+              WebkitTextStroke: "1px #b28a4a", 
+              color: "transparent",
+              padding: "0 4px"
+            }}
+          >Our Clients</span>{" "} 
+          Are Saying
         </h2>
 
-        {/* Wrapper constraints:
-           mx-auto + max-w-6xl ensures the carousel doesn't span the whole screen on ultrawide monitors.
-           overflow-hidden ensures we only see 1 card on mobile or 3 on desktop.
-        */}
-        <div className="max-w-6xl mx-auto overflow-hidden px-4 md:px-0">
+        <div 
+          className="max-w-6xl mx-auto overflow-hidden px-4 md:px-0 touch-pan-y"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <div className="relative h-[450px] md:h-[420px] flex items-center">
             <div
               className={`flex w-full h-full items-center ${
@@ -149,7 +182,7 @@ const Feedback = () => {
                     className="w-full lg:w-1/3 flex-shrink-0 px-4 flex justify-center items-center"
                   >
                     <div
-                      className={`w-full rounded-2xl text-left transition-all duration-500 transform flex flex-col justify-between ${
+                      className={`w-full rounded-2xl text-left transition-all duration-500 transform flex flex-col justify-between select-none ${
                         isCenter
                           ? "bg-[#2E3540] text-white shadow-2xl scale-100 lg:scale-110 z-20 py-10 px-8"
                           : "bg-white text-[#2E3540] scale-90 opacity-40 lg:opacity-60 shadow-sm py-8 px-8 z-10"
@@ -185,6 +218,7 @@ const Feedback = () => {
         </div>
       </div>
 
+      {/* -------- DOTS -------- */}
       <div className="flex justify-center mt-6 gap-4 items-center">
         {testimonials.map((_, i) => (
           <button

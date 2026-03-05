@@ -22,22 +22,22 @@ export default function PropertyAdCard({ property, activeImg, setActiveImg }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         
         {/* -------- LEFT IMAGE -------- */}
-        <div className="relative rounded-3xl overflow-hidden shadow-lg">
+        <div className="relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] sm:aspect-square lg:aspect-auto">
           <img
             src={images[activeImg]}
             alt="Property"
             className="w-full h-[320px] sm:h-[400px] lg:h-[480px] object-cover transition-all duration-500"
           />
 
-          {/* THUMBNAILS Overlay */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full flex gap-3 border border-white/20">
+          {/* THUMBNAILS - Now Aligned to the Right */}
+          <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md px-3 py-2 rounded-2xl sm:rounded-full flex gap-2 sm:gap-3 border border-white/20 max-w-[90%] overflow-x-auto no-scrollbar">
             {thumbs.map((img, index) => (
               <img
                 key={index}
                 src={img}
                 alt="thumb"
                 onClick={() => setActiveImg(index)}
-                className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full object-cover border-2 cursor-pointer transition-all ${
+                className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full object-cover border-2 cursor-pointer flex-shrink-0 transition-all ${
                   activeImg === index ? "border-white scale-110" : "border-transparent opacity-70"
                 }`}
               />
@@ -48,7 +48,6 @@ export default function PropertyAdCard({ property, activeImg, setActiveImg }) {
         {/* -------- RIGHT DETAILS -------- */}
         <div className="flex flex-col w-full">
           
-          {/* THE CURVE CONTAINER */}
           <div className="relative w-full aspect-[1.3/1] sm:aspect-[1.5/1] lg:aspect-[1.35/1]">
             <img
               src={curve}
@@ -57,7 +56,6 @@ export default function PropertyAdCard({ property, activeImg, setActiveImg }) {
             />
 
             <div className="relative z-10 flex flex-col h-full p-6 sm:p-10">
-              {/* HEADER */}
               <div className="flex items-center justify-between">
                 <h3 className="text-lg sm:text-2xl font-semibold">
                   Property Details
@@ -69,7 +67,6 @@ export default function PropertyAdCard({ property, activeImg, setActiveImg }) {
                 </div>
               </div>
 
-              {/* PILLS GRID */}
               <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-10">
                 <DetailPill icon={<FiHome />} text={property.name} />
                 <DetailPill icon={<FiMapPin />} text={property.location} />
@@ -79,8 +76,7 @@ export default function PropertyAdCard({ property, activeImg, setActiveImg }) {
                 <DetailPill icon={<FaCar />} text={property.car} />
               </div>
 
-              {/* CENTERED BUTTON - Positioned at bottom of curve */}
-              <div className="mt-[30px] sm:mt-auto pb-2 sm:pb-6">
+              <div className="mt-8 sm:mt-auto pb-2 sm:pb-6">
                 <button className="bg-[#b28a4a] text-white font-semibold tracking-[0.1em] w-full max-w-[200px] sm:max-w-[300px] py-3 rounded-full text-sm sm:text-lg hover:opacity-90 transition cursor-pointer shadow-md">
                   Details
                 </button>
@@ -88,7 +84,6 @@ export default function PropertyAdCard({ property, activeImg, setActiveImg }) {
             </div>
           </div>
 
-          {/* PRICE - Outside the curve at the very bottom */}
           <div className="mt-6">
             <span className="text-[#2f3540] text-2xl sm:text-4xl font-medium">
               Price : {property.price}

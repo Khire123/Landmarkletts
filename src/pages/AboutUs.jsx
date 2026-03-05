@@ -44,7 +44,7 @@ const AboutUs = () => {
       </div>
 
       {/* FLOATING GLASS BUTTON — ORIGINAL STYLE */}
-      <div className="absolute bottom-80 md:bottom-36 md:bottom-48 right-6 sm:right-12 md:right-24">
+      <div className="absolute bottom-60 md:bottom-36 md:bottom-48 right-6 sm:right-12 md:right-24">
 
         <button
           className="
