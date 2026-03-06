@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropertyAdCard from "../components/PropertyAdUi";
 
 import thumb1 from "../assets/thumb1.png";
@@ -9,6 +9,7 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 export default function PropertyAd() {
   const AUTO_SLIDE_INTERVAL = 4000;
+  const RESUME_DELAY = 5000; // Time to wait before resuming after interaction
 
   const properties = [
     {
@@ -48,7 +49,10 @@ export default function PropertyAd() {
 
   const [index, setIndex] = useState(0);
   const [activeImg, setActiveImg] = useState(0);
-  const [isPaused, setIsPaused] = useState(false); // New Pause State
+  const [isPaused, setIsPaused] = useState(false);
+  
+  // Ref to track the timeout that resumes the carousel
+  const resumeTimerRef = useRef(null);
 
   const next = () => {
     setIndex((prev) => (prev + 1) % properties.length);
@@ -60,16 +64,33 @@ export default function PropertyAd() {
     setActiveImg(0);
   };
 
+  // Function to pause and schedule a resume
+  const handleInteraction = () => {
+    setIsPaused(true);
+
+    // Clear any existing timer to avoid multiple triggers
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+
+    // Start a fresh timer to resume auto-slide
+    resumeTimerRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, RESUME_DELAY);
+  };
+
   /* -------- AUTO SLIDE EFFECT -------- */
   useEffect(() => {
-    if (isPaused) return; // Exit if paused
+    let interval;
+    if (!isPaused) {
+      interval = setInterval(() => {
+        next();
+      }, AUTO_SLIDE_INTERVAL);
+    }
 
-    const interval = setInterval(() => {
-      next();
-    }, AUTO_SLIDE_INTERVAL);
-
-    return () => clearInterval(interval);
-  }, [isPaused, properties.length]); // Re-run when pause state changes
+    return () => {
+      if (interval) clearInterval(interval);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, [isPaused, index]); 
 
   function Stat({ number, label, border }) {
     return (
@@ -95,8 +116,11 @@ export default function PropertyAd() {
       {/* ================= SLIDER WRAPPER ================= */}
       <div 
         className="max-w-7xl mx-auto relative group"
-        onMouseEnter={() => setIsPaused(true)} // Pause on Hover
-        onMouseLeave={() => setIsPaused(false)} // Resume on Leave
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        // MOBILE HOLD LOGIC
+        onTouchStart={() => setIsPaused(true)} 
+        onTouchEnd={handleInteraction}
       >
         <div className="overflow-hidden">
           <div
@@ -110,7 +134,7 @@ export default function PropertyAd() {
                   activeImg={activeImg}
                   setActiveImg={(imgIndex) => {
                     setActiveImg(imgIndex);
-                    setIsPaused(true); // Stop carousel when interacting with thumbs
+                    handleInteraction(); // Temporarily pause on thumbnail change
                   }}
                 />
               </div>
@@ -121,14 +145,22 @@ export default function PropertyAd() {
         {/* -------- ARROWS -------- */}
         <div className="absolute bottom-[70px] right-[10px] sm:bottom-[80px] sm:right-[30px] lg:bottom-[85px] lg:right-[30px] flex gap-3 z-30">
           <button
-            onClick={() => { prev(); setIsPaused(true); }} // Pause on Click
+            onClick={(e) => { 
+                e.stopPropagation();
+                prev(); 
+                handleInteraction(); 
+            }}
             className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center bg-white shadow-sm hover:border-[#b28a4a] hover:bg-[#b28a4a] hover:text-white transition-all cursor-pointer"
           >
             <FiArrowLeft size={20} />
           </button>
 
           <button
-            onClick={() => { next(); setIsPaused(true); }} // Pause on Click
+            onClick={(e) => { 
+                e.stopPropagation();
+                next(); 
+                handleInteraction(); 
+            }}
             className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-gray-300 flex items-center justify-center bg-white shadow-sm hover:border-[#b28a4a] hover:bg-[#b28a4a] hover:text-white transition-all cursor-pointer"
           >
             <FiArrowRight size={20} />
@@ -144,7 +176,7 @@ export default function PropertyAd() {
             onClick={() => {
               setIndex(i);
               setActiveImg(0);
-              setIsPaused(true); // Pause on Dot Click
+              handleInteraction();
             }}
             className={`transition-all duration-300 rounded-full ${index === i ? "w-6 h-2 bg-black" : "w-2 h-2 bg-gray-400 hover:bg-gray-600"}`}
           />
