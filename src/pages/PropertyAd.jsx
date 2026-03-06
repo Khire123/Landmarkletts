@@ -143,7 +143,7 @@ export default function PropertyAd() {
         </div>
 
         {/* -------- ARROWS -------- */}
-        <div className="absolute bottom-[70px] right-[10px] sm:bottom-[80px] sm:right-[30px] lg:bottom-[85px] lg:right-[30px] flex gap-3 z-30">
+        <div className="absolute bottom-[70px] right-[2px] sm:bottom-[80px] sm:right-[30px] lg:bottom-[85px] lg:right-[30px] flex gap-3 z-30">
           <button
             onClick={(e) => { 
                 e.stopPropagation();
