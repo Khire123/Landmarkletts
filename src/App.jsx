@@ -10,12 +10,29 @@ import Feedback from "./pages/Feedback";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import Tenant from "./pages/Tenant";
-
+import DetailAbtUs from "./pages/DetailAboutUs";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 /* 
   This stack makes everything appear in ONE scroll page.
   Home → Ad → AboutUs
 */
+
+
 const HomeStack = () => {
+  const location = useLocation();
+
+useEffect(() => {
+  if (location.state?.scrollTo === "services") {
+    const section = document.getElementById("services");
+
+    if (section) {
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+    }
+  }
+}, [location]);
   return (
     <>
       <Home />
@@ -35,6 +52,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeStack />} />
         <Route path="/tenant" element={<Tenant />} />
+        <Route path="/about" element={<DetailAbtUs />} />
       </Routes>
 
       <Footer />
