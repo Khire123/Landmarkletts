@@ -1,7 +1,7 @@
 import React from "react";
 import bgAbout from "../assets/bgAbout.png";
 import DiagonalImage from "../components/DiagonalImage";
-
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -44,7 +44,7 @@ const AboutUs = () => {
       </div>
 
       {/* FLOATING GLASS BUTTON — ORIGINAL STYLE */}
-      <div className="absolute bottom-60 md:bottom-36 md:bottom-48 right-6 sm:right-12 md:right-24">
+      {/* <div className="absolute bottom-60 md:bottom-36 md:bottom-48 right-6 sm:right-12 md:right-24">
 
         <button
           className="
@@ -63,8 +63,27 @@ const AboutUs = () => {
         >
           View More
         </button>
-      </div>
-
+      </div> */}
+      <div className="absolute bottom-60 md:bottom-36 right-6 sm:right-12 md:right-24">
+  <Link
+    to="/about"
+    className="
+      px-5 py-2 sm:px-10 sm:py-3 rounded-full
+      bg-white/40 backdrop-blur-lg
+      border border-white/50
+      text-black font-medium
+      shadow-2xl
+      hover:bg-[#b28a4a]
+      hover:border-[#b28a4a]
+      hover:text-white
+      transition duration-300
+      text-xs
+      sm:text-base
+    "
+  >
+    View More
+  </Link>
+</div>
     </section>
   );
 };

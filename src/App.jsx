@@ -14,11 +14,29 @@ import Collection from "./pages/Collection";
 import Marketing from "./pages/MArketing";
 import Valuation from "./pages/Valuation";
 import Advisory from "./pages/Advisory";
+import DetailAbtUs from "./pages/DetailAboutUs";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 /* 
   This stack makes everything appear in ONE scroll page.
   Home → Ad → AboutUs
 */
+
+
 const HomeStack = () => {
+  const location = useLocation();
+
+useEffect(() => {
+  if (location.state?.scrollTo === "services") {
+    const section = document.getElementById("services");
+
+    if (section) {
+      setTimeout(() => {
+        section.scrollIntoView({ behavior: "smooth" });
+      }, 200);
+    }
+  }
+}, [location]);
   return (
     <>
       <Home />
@@ -42,6 +60,7 @@ function App() {
         <Route path="/marketing" element={<Marketing />} />
         <Route path="/valuation" element={<Valuation />} />
         <Route path="/advisory" element={<Advisory />} />
+        <Route path="/about" element={<DetailAbtUs />} />
       </Routes>
 
       <Footer />
