@@ -66,9 +66,9 @@ const Card = ({ item, className = "" }) => {
 
       {/* Decorative Arrow */}
       <div className="mt-auto pt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
-        <span className="text-xs font-bold text-[#b28a4a] uppercase tracking-widest flex items-center gap-2">
+        {/* <span className="text-xs font-bold text-[#b28a4a] uppercase tracking-widest flex items-center gap-2">
           Learn More <span className="text-lg">→</span>
-        </span>
+        </span> */}
       </div>
     </div>
   );

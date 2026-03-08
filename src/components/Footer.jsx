@@ -20,7 +20,7 @@ const Footer = () => {
         {/* Brand Section */}
         <div>
           <h2 className="text-2xl font-serif font-semibold text-[#1c1c1c]">
-            EstateElite
+            LandMark Letts
           </h2>
 
           <p className="text-[#b28a4a] mt-3 font-medium">
@@ -29,7 +29,7 @@ const Footer = () => {
 
           <p className="text-gray-600 text-sm mt-4 leading-relaxed">
             A premier property consultancy delivering bespoke real estate
-            solutions for discerning clients since 2005.
+            solutions for discerning clients since 2007.
           </p>
 
           {/* Glass Social Icons */}
@@ -65,10 +65,10 @@ const Footer = () => {
           <ul className="space-y-3 text-sm text-gray-600">
             {[
               "Home",
+              "Listing",
               "About Us",
-              "Properties",
-              "Featured Listings",
-              "Blog",
+              "Our Services",
+              "Who We Serve",
               "Contact",
             ].map((item, i) => (
               <li
@@ -86,11 +86,11 @@ const Footer = () => {
           <h4 className="font-semibold mb-5 text-[#1c1c1c]">Our Services</h4>
           <ul className="space-y-3 text-sm text-gray-600">
             {[
-              "Buy Property",
-              "Sell Property",
-              "Rent Property",
-              "Property Valuation",
-              "Investment Consulting",
+              "Full Property Management & Rent Collection",
+              "Property Sales & Marketing",
+              "Property Valuation & Market Appraisal",
+              "Landlord Support & Investment Advisory",
+              "Property Letting & Tenant Referencing",
             ].map((item, i) => (
               <li
                 key={i}
@@ -109,7 +109,7 @@ const Footer = () => {
           <div className="space-y-4 text-sm text-gray-600 mb-6">
             <div className="flex items-start gap-3">
               <FaMapMarkerAlt className="text-[#b28a4a] mt-1" />
-              <p>42 King Street, London EC2V 8AT</p>
+              <p>92 Lincoln Road, London E7 8QW England</p>
             </div>
 
             <div className="flex items-center gap-3">
@@ -119,12 +119,12 @@ const Footer = () => {
 
             <div className="flex items-center gap-3">
               <FaEnvelope className="text-[#b28a4a]" />
-              <p>hello@youragency.co.uk</p>
+              <p>landmarkletss@gmail.com</p>
             </div>
 
             <div className="flex items-center gap-3">
               <FaClock className="text-[#b28a4a]" />
-              <p>Mon–Fri: 9am–6pm</p>
+              <p>Mon–Fri: 10am–6pm</p>
             </div>
           </div>
 
