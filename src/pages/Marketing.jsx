@@ -19,17 +19,17 @@ import service5 from "../assets/ourservice_img5.png";
 import tenantservices from "../assets/tenantservices.png";
 import { useNavigate } from "react-router-dom";
 
-const Tenant = () => {
+const Marketing = () => {
   const navigate = useNavigate();
-  useEffect(() => {
-  window.scrollTo(0, 0); // force page to start from top
+    useEffect(() => {
+    window.scrollTo(0, 0);
 
-  AOS.init({
-    duration: 1000,
-    once: true,
-    easing: "ease-out-cubic",
-  });
-}, []);
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out-cubic",
+    });
+  }, []);
 
   return (
     <div className="bg-[#f3efe9] text-gray-800">
@@ -41,7 +41,7 @@ const Tenant = () => {
 
           <img
             src={tenant}
-            alt="Tenant Referencing"
+            alt="Property Sales & Marketing"
             className="absolute inset-0 w-full h-full object-cover"
           />
 
@@ -53,8 +53,8 @@ const Tenant = () => {
               data-aos="fade-up"
               className="text-white font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight mb-4 sm:mb-6"
             >
-              Property Letting & <br />
-              Tenant Referencing
+              Property Sales <br />
+              & Marketing
             </h1>
 
             <p
@@ -62,8 +62,9 @@ const Tenant = () => {
               data-aos-delay="200"
               className="text-gray-200 text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl"
             >
-              Professional tenant screening and property letting services
-              designed to protect landlords and ensure reliable tenants.
+              Strategic marketing and professional sales services designed to
+              showcase properties effectively and connect sellers with the
+              right buyers.
             </p>
 
           </div>
@@ -75,16 +76,16 @@ const Tenant = () => {
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-            <div
-  data-aos="fade-right"
-  className="w-full max-w-[360px] h-[300px] sm:h-[360px] lg:h-[420px] mx-auto md:mx-0 relative overflow-hidden rounded-md"
->
-  <img
-    src={tenantservices}
-    alt="Tenant Services"
-    className="w-full h-full object-cover"
-  />
-</div>
+          <div
+            data-aos="fade-right"
+            className="w-full max-w-[360px] h-[300px] sm:h-[360px] lg:h-[420px] mx-auto md:mx-0 relative overflow-hidden rounded-md"
+          >
+            <img
+              src={tenantservices}
+              alt="Property Marketing"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
           <div data-aos="fade-left" className="max-w-[520px]">
 
@@ -93,20 +94,20 @@ const Tenant = () => {
             </p>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight mb-6">
-              Professional Letting <br />& Tenant Referencing
+              Strategic Property <br /> Sales & Marketing
             </h2>
 
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4">
-              Finding the right tenant is essential for protecting your property
-              and ensuring consistent rental income. Our professional tenant
-              referencing process verifies identity, employment, financial
-              stability, and previous rental history.
+              Selling property requires more than just listing it online. Our
+              property sales and marketing services focus on positioning your
+              property to attract the right buyers through strategic promotion,
+              professional presentation, and targeted outreach.
             </p>
 
             <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-              We handle the entire process including property marketing, tenant
-              screening, background checks, and documentation — allowing
-              landlords to rent their property with confidence.
+              From high-quality property listings and digital marketing to
+              buyer negotiations and closing support, we manage the entire
+              sales process to achieve the best possible results.
             </p>
 
           </div>
@@ -119,7 +120,7 @@ const Tenant = () => {
 
       </section>
 
-      {/* LETTING PROCESS */}
+      {/* SALES PROCESS */}
       <section className="bg-[#e5e5e5] py-16 sm:py-20 lg:py-24">
 
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
@@ -128,27 +129,27 @@ const Tenant = () => {
             data-aos="fade-up"
             className="text-center text-3xl sm:text-4xl md:text-5xl font-serif mb-12 sm:mb-16"
           >
-            Our Letting Process
+            Our Sales Process
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
 
             {[
               {
-                title: "Property Assessment",
-                desc: "We evaluate your property and determine the ideal rental strategy.",
+                title: "Property Evaluation",
+                desc: "Understanding the property and positioning it competitively in the market.",
               },
               {
-                title: "Tenant Screening",
-                desc: "Full background checks including credit, employment, and references.",
+                title: "Professional Marketing",
+                desc: "Strategic listings, digital marketing, and exposure to qualified buyers.",
               },
               {
-                title: "Property Viewings",
-                desc: "We manage inquiries and schedule professional property tours.",
+                title: "Buyer Engagement",
+                desc: "Handling inquiries, viewings, and negotiations with potential buyers.",
               },
               {
-                title: "Agreement & Move-In",
-                desc: "Preparation of rental agreements and tenant onboarding.",
+                title: "Closing Support",
+                desc: "Managing documentation and ensuring a smooth property sale process.",
               },
             ].map((item, i) => (
 
@@ -181,7 +182,7 @@ const Tenant = () => {
         </div>
       </section>
 
-      {/* BENEFITS SECTION */}
+      {/* BENEFITS */}
       <section
         className="relative w-full min-h-[420px] sm:min-h-[460px] bg-fixed bg-cover bg-center flex items-center"
         style={{ backgroundImage: `url(${tenant2})` }}
@@ -195,16 +196,16 @@ const Tenant = () => {
             data-aos="fade-up"
             className="text-3xl sm:text-4xl lg:text-[48px] font-serif text-white leading-tight mb-10 text-center"
           >
-            Benefits of Our Letting Service
+            Benefits of Our Sales Service
           </h2>
 
           <div className="max-w-[520px] mx-auto space-y-6">
 
             {[
-              "Reliable Tenant Screening",
-              "Reduced Vacancy Periods",
-              "Legal Documentation Support",
-              "Stress-Free Property Letting",
+              "Strategic Property Marketing",
+              "Access to Qualified Buyers",
+              "Professional Negotiation Support",
+              "Efficient and Transparent Sales Process",
             ].map((item, i) => (
 
               <div
@@ -266,7 +267,7 @@ const Tenant = () => {
             data-aos="fade-up"
             className="text-3xl sm:text-4xl lg:text-[48px] font-serif text-black mb-12"
           >
-            Ready to Let Your Property?
+            Ready to Sell Your Property?
           </h2>
 
           <div
@@ -287,7 +288,7 @@ const Tenant = () => {
         </div>
       </section>
 
-   {/* OUR SERVICES */}
+{/* OUR SERVICES */}
 <section className="bg-[#f3efe9] py-20 sm:py-24">
 
   <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
@@ -307,9 +308,8 @@ const Tenant = () => {
         data-aos-delay="100"
         className="bg-[#e3e0db] rounded-2xl p-6 relative"
       >
-
         <img
-          src={service1}
+          src={service2}
           alt="service"
           className="w-full h-[180px] object-cover rounded-xl mb-5"
         />
@@ -325,7 +325,6 @@ const Tenant = () => {
         >
           <FiArrowUpRight className="text-white text-xl"/>
         </button>
-
       </div>
 
 
@@ -335,25 +334,23 @@ const Tenant = () => {
         data-aos-delay="200"
         className="bg-[#e3e0db] rounded-2xl p-6 relative"
       >
-
         <img
-          src={service2}
+          src={service4}
           alt="service"
           className="w-full h-[180px] object-cover rounded-xl mb-5"
         />
 
         <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
-          Property Sales <br />
-          & Marketing
+          Property Valuation & <br />
+          Market Appraisal
         </h3>
 
         <button
-          onClick={() => navigate("/marketing")}
+          onClick={() => navigate("/valuation")}
           className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
         >
           <FiArrowUpRight className="text-white text-xl"/>
         </button>
-
       </div>
 
 
@@ -363,25 +360,23 @@ const Tenant = () => {
         data-aos-delay="300"
         className="bg-[#e3e0db] rounded-2xl p-6 relative"
       >
-
         <img
-          src={service3}
+          src={service5}
           alt="service"
           className="w-full h-[180px] object-cover rounded-xl mb-5"
         />
 
         <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
-          Property Valuation <br />
-          & Market Appraisal
+          Landlord Support & <br />
+          Investment Advisory
         </h3>
 
         <button
-          onClick={() => navigate("/valuation")}
+          onClick={() => navigate("/advisory")}
           className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
         >
           <FiArrowUpRight className="text-white text-xl"/>
         </button>
-
       </div>
 
 
@@ -391,25 +386,23 @@ const Tenant = () => {
         data-aos-delay="400"
         className="bg-[#e3e0db] rounded-2xl p-6 relative"
       >
-
         <img
-          src={service4}
+          src={service1}
           alt="service"
           className="w-full h-[180px] object-cover rounded-xl mb-5"
         />
 
         <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
-          Landlord Support <br />
-          & Investment Advisory
+          Property Letting & <br />
+          Tenant Referencing
         </h3>
 
         <button
-          onClick={() => navigate("/advisory")}
+          onClick={() => navigate("/tenant")}
           className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
         >
           <FiArrowUpRight className="text-white text-xl"/>
         </button>
-
       </div>
 
     </div>
@@ -417,8 +410,9 @@ const Tenant = () => {
 
 </section>
 
+
     </div>
   );
 };
 
-export default Tenant;
+export default Marketing;
