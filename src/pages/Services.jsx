@@ -150,6 +150,26 @@ const Services = () => {
                 ) {
                   navigate("/tenant");
                 }
+                if (
+                  leftCard.title ===
+                  "Full Property Management & Rent Collection"
+                ) {
+                  navigate("/collection");
+                }
+                if (leftCard.title === "Property Sales & Marketing") {
+                  navigate("/marketing");
+                }
+                if (
+                  leftCard.title === "Property Valuation & Market Appraisal"
+                ) {
+                  navigate("/valuation");
+                }
+
+                if (
+                  leftCard.title === "Landlord Support & Investment Advisory"
+                ) {
+                  navigate("/advisory");
+                }
               }}
               className="w-12 h-12 rounded-full border border-white/40 bg-white/40 backdrop-blur-md flex items-center justify-center hover:bg-black group transition"
             >
