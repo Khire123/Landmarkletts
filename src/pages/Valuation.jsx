@@ -22,6 +22,11 @@ import { useNavigate } from "react-router-dom";
 
 const Valuation = () => {
   const navigate = useNavigate();
+
+  const goToServices = () => {
+    navigate("/", { state: { scrollTo: "services" } });
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -35,8 +40,8 @@ const Valuation = () => {
   return (
     <div className="bg-[#f3efe9] text-gray-800">
       {/* HERO SECTION */}
-      <section className="w-full bg-[#f3efe9] px-4 sm:px-6 lg:px-12 pt-4 sm:pt-6">
-        <div className="relative max-w-[1400px] mx-auto h-[420px] sm:h-[480px] lg:h-[520px] rounded-xl overflow-hidden">
+      <section className="w-full bg-[#f3efe9]">
+        <div className="relative w-full h-[420px] sm:h-[480px] lg:h-[520px] overflow-hidden">
           <img
             src={tenant}
             alt="Property Valuation & Market Appraisal"
@@ -262,7 +267,10 @@ const Valuation = () => {
               GET VALUATION
             </button>
 
-            <button className="border border-gray-400 text-gray-700 px-8 py-3 rounded-md text-sm tracking-widest hover:bg-gray-100 transition">
+            <button
+              onClick={goToServices}
+              className="border border-gray-400 text-gray-700 px-8 py-3 rounded-md text-sm tracking-widest hover:bg-gray-100 transition"
+            >
               BACK TO SERVICES
             </button>
           </div>

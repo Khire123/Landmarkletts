@@ -22,7 +22,12 @@ import tenantservices from "../assets/tenantservices.png";
 import { useNavigate } from "react-router-dom";
 
 const Collection = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const goToServices = () => {
+    navigate("/", { state: { scrollTo: "services" } });
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -36,8 +41,8 @@ const Collection = () => {
   return (
     <div className="bg-[#f3efe9] text-gray-800">
       {/* HERO SECTION */}
-      <section className="w-full bg-[#f3efe9] px-4 sm:px-6 lg:px-12 pt-4 sm:pt-6">
-        <div className="relative max-w-[1400px] mx-auto h-[420px] sm:h-[480px] lg:h-[520px] rounded-xl overflow-hidden">
+      <section className="w-full bg-[#f3efe9]">
+        <div className="relative w-full h-[420px] sm:h-[480px] lg:h-[520px] overflow-hidden">
           <img
             src={tenant}
             alt="Property Management"
@@ -264,129 +269,125 @@ const Collection = () => {
               START NOW
             </button>
 
-            <button className="border border-gray-400 text-gray-700 px-8 py-3 rounded-md text-sm tracking-widest hover:bg-gray-100 transition">
+            <button
+              onClick={goToServices}
+              className="border border-gray-400 text-gray-700 px-8 py-3 rounded-md text-sm tracking-widest hover:bg-gray-100 transition"
+            >
               BACK TO SERVICES
             </button>
           </div>
         </div>
       </section>
 
-     {/* OUR SERVICES */}
-<section className="bg-[#f3efe9] py-20 sm:py-24">
-  <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+      {/* OUR SERVICES */}
+      <section className="bg-[#f3efe9] py-20 sm:py-24">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <h2
+            data-aos="fade-up"
+            className="text-3xl sm:text-4xl lg:text-[56px] font-bold text-center text-gray-800 mb-12 sm:mb-16"
+          >
+            Our Services
+          </h2>
 
-    <h2
-      data-aos="fade-up"
-      className="text-3xl sm:text-4xl lg:text-[56px] font-bold text-center text-gray-800 mb-12 sm:mb-16"
-    >
-      Our Services
-    </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+            {/* CARD 1 */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="bg-[#e3e0db] rounded-2xl p-6 relative"
+            >
+              <img
+                src={service3}
+                alt="service"
+                className="w-full h-[180px] object-cover rounded-xl mb-5"
+              />
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+              <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
+                Property Sales & <br /> Marketing
+              </h3>
 
-      {/* CARD 1 */}
-      <div
-        data-aos="fade-up"
-        data-aos-delay="100"
-        className="bg-[#e3e0db] rounded-2xl p-6 relative"
-      >
-        <img
-          src={service3}
-          alt="service"
-          className="w-full h-[180px] object-cover rounded-xl mb-5"
-        />
+              <button
+                onClick={() => navigate("/marketing")}
+                className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
+              >
+                <FiArrowUpRight className="text-white text-xl" />
+              </button>
+            </div>
 
-        <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
-          Property Sales & <br /> Marketing
-        </h3>
+            {/* CARD 2 */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="200"
+              className="bg-[#e3e0db] rounded-2xl p-6 relative"
+            >
+              <img
+                src={service4}
+                alt="service"
+                className="w-full h-[180px] object-cover rounded-xl mb-5"
+              />
 
-        <button
-          onClick={() => navigate("/marketing")}
-          className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
-        >
-          <FiArrowUpRight className="text-white text-xl"/>
-        </button>
-      </div>
+              <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
+                Property Valuation & <br /> Market Appraisal
+              </h3>
 
+              <button
+                onClick={() => navigate("/valuation")}
+                className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
+              >
+                <FiArrowUpRight className="text-white text-xl" />
+              </button>
+            </div>
 
-      {/* CARD 2 */}
-      <div
-        data-aos="fade-up"
-        data-aos-delay="200"
-        className="bg-[#e3e0db] rounded-2xl p-6 relative"
-      >
-        <img
-          src={service4}
-          alt="service"
-          className="w-full h-[180px] object-cover rounded-xl mb-5"
-        />
+            {/* CARD 3 */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="300"
+              className="bg-[#e3e0db] rounded-2xl p-6 relative"
+            >
+              <img
+                src={service5}
+                alt="service"
+                className="w-full h-[180px] object-cover rounded-xl mb-5"
+              />
 
-        <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
-          Property Valuation & <br /> Market Appraisal
-        </h3>
+              <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
+                Landlord Support & <br /> Investment Advisory
+              </h3>
 
-        <button
-          onClick={() => navigate("/valuation")}
-          className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
-        >
-          <FiArrowUpRight className="text-white text-xl"/>
-        </button>
-      </div>
+              <button
+                onClick={() => navigate("/advisory")}
+                className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
+              >
+                <FiArrowUpRight className="text-white text-xl" />
+              </button>
+            </div>
 
+            {/* CARD 4 */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="400"
+              className="bg-[#e3e0db] rounded-2xl p-6 relative"
+            >
+              <img
+                src={service1}
+                alt="service"
+                className="w-full h-[180px] object-cover rounded-xl mb-5"
+              />
 
-      {/* CARD 3 */}
-      <div
-        data-aos="fade-up"
-        data-aos-delay="300"
-        className="bg-[#e3e0db] rounded-2xl p-6 relative"
-      >
-        <img
-          src={service5}
-          alt="service"
-          className="w-full h-[180px] object-cover rounded-xl mb-5"
-        />
+              <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
+                Property Letting & <br /> Tenant Referencing
+              </h3>
 
-        <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
-          Landlord Support & <br /> Investment Advisory
-        </h3>
-
-        <button
-          onClick={() => navigate("/advisory")}
-          className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
-        >
-          <FiArrowUpRight className="text-white text-xl"/>
-        </button>
-      </div>
-
-
-      {/* CARD 4 */}
-      <div
-        data-aos="fade-up"
-        data-aos-delay="400"
-        className="bg-[#e3e0db] rounded-2xl p-6 relative"
-      >
-        <img
-          src={service1}
-          alt="service"
-          className="w-full h-[180px] object-cover rounded-xl mb-5"
-        />
-
-        <h3 className="text-gray-800 text-lg sm:text-xl leading-snug">
-          Property Letting & <br /> Tenant Referencing
-        </h3>
-
-        <button
-          onClick={() => navigate("/tenant")}
-          className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
-        >
-          <FiArrowUpRight className="text-white text-xl"/>
-        </button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+              <button
+                onClick={() => navigate("/tenant")}
+                className="absolute bottom-5 right-5 w-11 h-11 bg-[#2e3741] rounded-full flex items-center justify-center"
+              >
+                <FiArrowUpRight className="text-white text-xl" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
