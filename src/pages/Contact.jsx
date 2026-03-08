@@ -4,10 +4,10 @@ import ContactImage from "../assets/Contact.png";
 
 const Contact = () => {
   const cards = [
-    { icon: Phone, title: "Call Us", main: "+44 20 7946 0958", sub: "Mon–Fri, 9am–6pm" },
+    { icon: Phone, title: "Call Us", main: "+44 20 7946 0958", sub: "Mon–Fri, 10am–6pm" },
     { icon: Mail, title: "Email Us", main: "hello@youragency.co.uk", sub: "We reply within 24 hours" },
-    { icon: MapPin, title: "Visit Us", main: "42 King Street, London", sub: "By appointment only" },
-    { icon: Clock, title: "Working Hours", main: "Mon – Fri: 9:00 – 18:00", sub: "Sat: 10:00 – 14:00" },
+    { icon: MapPin, title: "Visit Us", main: "92 Lincoln Road, London E7 8QW England", sub: "By appointment only" },
+    { icon: Clock, title: "Working Hours", main: "Mon – Fri: 9:00 – 18:00", sub: "Sat/Sun: closed" },
   ];
 
   return (
@@ -126,7 +126,7 @@ const Contact = () => {
         <div className="rounded-[32px] overflow-hidden shadow-2xl border-[12px] border-white">
           <iframe
             title="location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.9050207917!2d-0.093496023369528!3d51.51494727181515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb4df797825%3A0xe67531776510368c!2s42%20King%20St%2C%20London%20EC2V%208AS!5e0!3m2!1sen!2suk!4v1709220000000!5m2!1sen!2suk"
+            src="https://maps.google.com/maps?q=92%20Lincoln%20Road%2C%20London%20E7%208QW%2C%20England&output=embed"
             width="100%"
             height="450"
             style={{ filter: "grayscale(0.6) contrast(1.1) brightness(0.9)" }}
