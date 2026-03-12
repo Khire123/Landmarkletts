@@ -76,7 +76,7 @@ const Card = ({ item, className = "" }) => {
 
 const Whoweserve = () => {
   return (
-    <section className="w-full bg-[#f4f1ea] py-24 px-6 font-[prompt] overflow-hidden">
+    <section id="serve"className="w-full bg-[#f4f1ea] py-24 px-6 font-[prompt] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}

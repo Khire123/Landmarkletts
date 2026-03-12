@@ -61,25 +61,27 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-semibold mb-5 text-[#1c1c1c]">Quick Links</h4>
-          <ul className="space-y-3 text-sm text-gray-600">
-            {[
-              "Home",
-              "Listing",
-              "About Us",
-              "Our Services",
-              "Who We Serve",
-              "Contact",
-            ].map((item, i) => (
-              <li
-                key={i}
-                className="hover:text-[#b28a4a] transition cursor-pointer"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+  <h4 className="font-semibold mb-5 text-[#1c1c1c]">Quick Links</h4>
+  <ul className="space-y-3 text-sm text-gray-600">
+    {[
+      { name: "Home", href: "#" },
+      { name: "Listing", href: "#listing" },
+      { name: "About Us", href: "#about" },
+      { name: "Our Services", href: "#services" },
+      { name: "Who We Serve", href: "#serve" },
+      { name: "Contact", href: "#contact" },
+    ].map((item, i) => (
+      <li key={i}>
+        <a
+          href={item.href}
+          className="hover:text-[#b28a4a] transition cursor-pointer"
+        >
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
 
         {/* Services */}
         {/* <div>
@@ -115,25 +117,25 @@ const Footer = () => {
 
     {/* Other Items */}
     <li className="hover:text-[#b28a4a] transition cursor-pointer">
-      <Link to="/Marketing">
+      <Link to="/marketing">
       Property Sales & Marketing
       </Link>
     </li>
 
     <li className="hover:text-[#b28a4a] transition cursor-pointer">
-      <Link to="/Valuation">
+      <Link to="/valuation">
       Property Valuation & Market Appraisal
       </Link>
     </li>
 
     <li className="hover:text-[#b28a4a] transition cursor-pointer">
-      <Link to="/Advisory">
+      <Link to="/advisory">
       Landlord Support & Investment Advisory
       </Link>
     </li>
 
     <li className="hover:text-[#b28a4a] transition cursor-pointer">
-      <Link to="/Tenant">
+      <Link to="/tenant">
       Property Letting & Tenant Referencing
       </Link>
     </li>

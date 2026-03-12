@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Ad from "./pages/PropertyAd";
@@ -15,18 +15,12 @@ import Marketing from "./pages/MArketing";
 import Valuation from "./pages/Valuation";
 import Advisory from "./pages/Advisory";
 import DetailAbtUs from "./pages/DetailAboutUs";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import VillaDetails from "./pages/VillaPropertyDetail"; 
 import ApartmentDetails from "./pages/ApartmentPropertyDetail";
 import BeachDetails from "./pages/BeachPropertyDetail";
 
 import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/Privacy&Policy";
-/* 
-  This stack makes everything appear in ONE scroll page.
-  Home → Ad → AboutUs
-*/
 
 const HomeStack = () => {
   const location = useLocation();
@@ -34,7 +28,6 @@ const HomeStack = () => {
   useEffect(() => {
     if (location.state?.scrollTo === "services") {
       const section = document.getElementById("services");
-
       if (section) {
         setTimeout(() => {
           section.scrollIntoView({ behavior: "smooth" });
@@ -42,6 +35,7 @@ const HomeStack = () => {
       }
     }
   }, [location]);
+
   return (
     <>
       <Home />
@@ -54,9 +48,20 @@ const HomeStack = () => {
     </>
   );
 };
-function App() {
+
+// 1. Create a helper component to hold the logic
+const MainContent = () => {
+  const location = useLocation(); // Now this works because it's inside BrowserRouter
+  const hideFooterPaths = ["/privacy-policy", "/terms"];
+  
+  // 2. Your If Statement logic
+  let footerElement = <Footer />;
+  if (hideFooterPaths.includes(location.pathname)) {
+    footerElement = null;
+  }
+
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route path="/" element={<HomeStack />} />
         <Route path="/tenant" element={<Tenant />} />
@@ -67,12 +72,21 @@ function App() {
         <Route path="/about" element={<DetailAbtUs />} />
         <Route path="/villa-details" element={<VillaDetails />} />
         <Route path="/apartment-details" element={<ApartmentDetails />} />
-         <Route path="/beach-details" element={<BeachDetails />} />
+        <Route path="/beach-details" element={<BeachDetails />} />
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
-      <Footer />
+      {footerElement}
+    </>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      {/* 3. Call the content component here */}
+      <MainContent />
     </BrowserRouter>
   );
 }
