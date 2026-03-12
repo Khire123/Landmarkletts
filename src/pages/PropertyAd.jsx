@@ -12,40 +12,43 @@ export default function PropertyAd() {
   const RESUME_DELAY = 5000; // Time to wait before resuming after interaction
 
   const properties = [
-    {
-      name: "The Kensington Villa",
-      location: "Kensington, London",
-      bed: "4 Bedrooms",
-      bath: "2 Bathroom",
-      car: "2 Cars",
-      area: "3,200 sq ft",
-      price: "£1,250,000",
-      images: [thumb1, thumb2, thumb3],
-      thumbs: [thumb1, thumb2, thumb3],
-    },
-    {
-      name: "Palm Luxury Estate",
-      location: "Palm Jumeirah, Dubai",
-      bed: "5 Bedrooms",
-      bath: "4 Bathroom",
-      car: "3 Cars",
-      area: "4,500 sq ft",
-      price: "£2,100,000",
-      images: [thumb2, thumb3, thumb1],
-      thumbs: [thumb2, thumb3, thumb1],
-    },
-    {
-      name: "Skyline Penthouse",
-      location: "Manhattan, New York",
-      bed: "3 Bedrooms",
-      bath: "3 Bathroom",
-      car: "2 Cars",
-      area: "2,100 sq ft",
-      price: "£1,800,000",
-      images: [thumb3, thumb1, thumb2],
-      thumbs: [thumb3, thumb1, thumb2],
-    },
-  ];
+  {
+    name: "The Kensington Villa",
+    location: "Kensington, London",
+    bed: "4 Bedrooms",
+    bath: "2 Bathroom",
+    car: "2 Cars",
+    area: "3,200 sq ft",
+    price: "£1,250,000",
+    link: "/villa-details",
+    images: [thumb1, thumb2, thumb3],
+    thumbs: [thumb1, thumb2, thumb3],
+  },
+  {
+    name: "Palm Luxury Estate",
+    location: "Palm Jumeirah, Dubai",
+    bed: "5 Bedrooms",
+    bath: "4 Bathroom",
+    car: "3 Cars",
+    area: "4,500 sq ft",
+    price: "£2,100,000",
+    link: "/apartment-details",
+    images: [thumb2, thumb3, thumb1],
+    thumbs: [thumb2, thumb3, thumb1],
+  },
+  {
+    name: "Skyline Penthouse",
+    location: "Manhattan, New York",
+    bed: "3 Bedrooms",
+    bath: "3 Bathroom",
+    car: "2 Cars",
+    area: "2,100 sq ft",
+    price: "£1,800,000",
+    link: "/beach-details",
+    images: [thumb3, thumb1, thumb2],
+    thumbs: [thumb3, thumb1, thumb2],
+  },
+];
 
   const [index, setIndex] = useState(0);
   const [activeImg, setActiveImg] = useState(0);
