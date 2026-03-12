@@ -28,6 +28,10 @@ import {
 const AnimatedCounter = ({ target, suffix }) => {
   const [count, setCount] = useState(0);
 
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+    
   useEffect(() => {
     let start = 0;
     const duration = 2000;
