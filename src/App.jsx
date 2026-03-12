@@ -17,6 +17,8 @@ import Advisory from "./pages/Advisory";
 import DetailAbtUs from "./pages/DetailAboutUs";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import TermsConditions from "./pages/TermsConditions";
+import PrivacyPolicy from "./pages/Privacy&Policy";
 /* 
   This stack makes everything appear in ONE scroll page.
   Home → Ad → AboutUs
@@ -61,6 +63,8 @@ function App() {
         <Route path="/valuation" element={<Valuation />} />
         <Route path="/advisory" element={<Advisory />} />
         <Route path="/about" element={<DetailAbtUs />} />
+        <Route path="/terms" element={<TermsConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
       <Footer />
