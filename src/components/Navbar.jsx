@@ -76,7 +76,7 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       <div
         className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
         } bg-black/90 text-white`}
       >
         <div className="flex flex-col gap-4 p-6 items-center">
