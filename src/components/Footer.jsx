@@ -109,7 +109,7 @@ const Footer = () => {
           <div className="space-y-4 text-sm text-gray-600 mb-6">
             <div className="flex items-start gap-3">
               <FaMapMarkerAlt className="text-[#b28a4a] mt-1" />
-              <p>92 Lincoln Road, London E7 8QW England</p>
+              <p>Jhumat House, 160 London Rd, Barking Greater London IG11 8BB, UK</p>
             </div>
 
             <div className="flex items-center gap-3">
