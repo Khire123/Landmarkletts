@@ -10,7 +10,7 @@ import {
   FaClock,
   FaArrowRight,
 } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="relative bg-[#f4f1ea] border-t border-[#e2ddd3]">
@@ -82,7 +82,7 @@ const Footer = () => {
         </div>
 
         {/* Services */}
-        <div>
+        {/* <div>
           <h4 className="font-semibold mb-5 text-[#1c1c1c]">Our Services</h4>
           <ul className="space-y-3 text-sm text-gray-600">
             {[
@@ -100,7 +100,46 @@ const Footer = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
+        <div>
+  <h4 className="font-semibold mb-5 text-[#1c1c1c]">Our Services</h4>
+
+  <ul className="space-y-3 text-sm text-gray-600">
+
+    {/* Linked Item */}
+    <li className="hover:text-[#b28a4a] transition cursor-pointer">
+      <Link to="/collection">
+        Full Property Management & Rent Collection
+      </Link>
+    </li>
+
+    {/* Other Items */}
+    <li className="hover:text-[#b28a4a] transition cursor-pointer">
+      <Link to="/Marketing">
+      Property Sales & Marketing
+      </Link>
+    </li>
+
+    <li className="hover:text-[#b28a4a] transition cursor-pointer">
+      <Link to="/Valuation">
+      Property Valuation & Market Appraisal
+      </Link>
+    </li>
+
+    <li className="hover:text-[#b28a4a] transition cursor-pointer">
+      <Link to="/Advisory">
+      Landlord Support & Investment Advisory
+      </Link>
+    </li>
+
+    <li className="hover:text-[#b28a4a] transition cursor-pointer">
+      <Link to="/Tenant">
+      Property Letting & Tenant Referencing
+      </Link>
+    </li>
+
+  </ul>
+</div>
 
         {/* Contact + Newsletter */}
         <div>
@@ -109,12 +148,12 @@ const Footer = () => {
           <div className="space-y-4 text-sm text-gray-600 mb-6">
             <div className="flex items-start gap-3">
               <FaMapMarkerAlt className="text-[#b28a4a] mt-1" />
-              <p>92 Lincoln Road, London E7 8QW England</p>
+              <p>Jhumat House, 160 London Rd, Barking Greater London IG11 8BB, UK</p>
             </div>
 
             <div className="flex items-center gap-3">
               <FaPhoneAlt className="text-[#b28a4a]" />
-              <p>+44 20 7946 0958</p>
+              <p>020 3633 9443 / +44 20 3633 9443</p>
             </div>
 
             <div className="flex items-center gap-3">
@@ -146,11 +185,11 @@ const Footer = () => {
               Get latest property updates
             </p>
 
-           <div className="relative flex items-center">
-  <input
-    type="email"
-    placeholder="Your email"
-    className="
+            <div className="relative flex items-center">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="
       w-full
       px-5 py-3
       text-sm
@@ -160,10 +199,10 @@ const Footer = () => {
       focus:outline-none
       focus:border-[#b28a4a]
     "
-  />
+              />
 
-  <button
-    className="
+              <button
+                className="
       absolute right-1
       h-[75%]
       px-4
@@ -174,10 +213,10 @@ const Footer = () => {
       transition
       shadow-md
     "
-  >
-    <FaArrowRight className="text-sm"/>
-  </button>
-</div>
+              >
+                <FaArrowRight className="text-sm" />
+              </button>
+            </div>
 
           </div>
         </div>
@@ -186,37 +225,48 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-[#e2ddd3]">
-  <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
 
-    {/* Left Side */}
-    <p>
-      © 2026 EstateElite. All rights reserved.
-    </p>
+          {/* Left Side */}
+          <p>
+            © 2026 LandMark Letts. All rights reserved.
+          </p>
 
-    {/* Right Side */}
-    <div className="flex items-center gap-3">
-      <span className="hover:text-[#b28a4a] cursor-pointer transition">
-        Privacy Policy
-      </span>
+          {/* Right Side */}
+          <div className="flex items-center gap-3">
+            <Link
+              to="/privacy-policy"
+              className="hover:text-[#b28a4a] cursor-pointer transition"
+            >
+              Privacy Policy
+            </Link>
 
-      <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+            <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
 
-      <span className="hover:text-[#b28a4a] cursor-pointer transition">
-        Terms & Conditions
-      </span>
+            <Link
+              to="/terms"
+              className="hover:text-[#b28a4a] cursor-pointer transition text-[0.95rem]"
+            >
+              Terms & Conditions
+            </Link>
 
-      <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+            <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
 
-      <span>
-        Designed & Created by{" "}
-        <span className="text-[#b28a4a] font-medium">
-          Krewlancer
-        </span>
-      </span>
-    </div>
+            <span>
+              Designed & Created by{" "}
+              <a
+                href="https://krewlancer.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#b28a4a] font-medium hover:underline"
+              >
+                Krewlancer
+              </a>
+            </span>
+          </div>
 
-  </div>
-</div>
+        </div>
+      </div>
 
     </footer>
   );

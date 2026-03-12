@@ -21,6 +21,8 @@ import VillaDetails from "./pages/VillaPropertyDetail";
 import ApartmentDetails from "./pages/ApartmentPropertyDetail";
 import BeachDetails from "./pages/BeachPropertyDetail";
 
+import TermsConditions from "./pages/TermsConditions";
+import PrivacyPolicy from "./pages/Privacy&Policy";
 /* 
   This stack makes everything appear in ONE scroll page.
   Home → Ad → AboutUs
@@ -66,6 +68,8 @@ function App() {
         <Route path="/villa-details" element={<VillaDetails />} />
         <Route path="/apartment-details" element={<ApartmentDetails />} />
          <Route path="/beach-details" element={<BeachDetails />} />
+        <Route path="/terms" element={<TermsConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
 
       <Footer />

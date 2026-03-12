@@ -4,9 +4,9 @@ import ContactImage from "../assets/Contact.png";
 
 const Contact = () => {
   const cards = [
-    { icon: Phone, title: "Call Us", main: "+44 20 7946 0958", sub: "Mon–Fri, 10am–6pm" },
-    { icon: Mail, title: "Email Us", main: "hello@youragency.co.uk", sub: "We reply within 24 hours" },
-    { icon: MapPin, title: "Visit Us", main: "92 Lincoln Road, London E7 8QW England", sub: "By appointment only" },
+    { icon: Phone, title: "Call Us", main: "020 3633 9443/ +44 20 3633 9443", sub: "Mon–Fri, 10am–6pm" },
+    { icon: Mail, title: "Email Us", main: "landmarkletts@gmail.com", sub: "We reply within 24 hours" },
+    { icon: MapPin, title: "Visit Us", main: "Jhumat House, 160 London Rd, Barking Greater London IG11 8BB, UK", sub: "By appointment only" },
     { icon: Clock, title: "Working Hours", main: "Mon – Fri: 9:00 – 18:00", sub: "Sat/Sun: closed" },
   ];
 
@@ -126,7 +126,7 @@ const Contact = () => {
         <div className="rounded-[32px] overflow-hidden shadow-2xl border-[12px] border-white">
           <iframe
             title="location"
-            src="https://maps.google.com/maps?q=92%20Lincoln%20Road%2C%20London%20E7%208QW%2C%20England&output=embed"
+            src="https://www.google.com/maps?q=Jhumat%20House%20160%20London%20Rd%20Barking%20IG11%208BB%20UK&output=embed"
             width="100%"
             height="450"
             style={{ filter: "grayscale(0.6) contrast(1.1) brightness(0.9)" }}
