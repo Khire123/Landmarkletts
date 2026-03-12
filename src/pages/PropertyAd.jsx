@@ -102,7 +102,7 @@ export default function PropertyAd() {
   }
 
   return (
-    <section className="w-full bg-[#f4f1ea] py-16 px-6 md:px-12 lg:px-20 font-[prompt]">
+    <section id="listing" className="w-full bg-[#f4f1ea] py-16 px-6 md:px-12 lg:px-20 font-[prompt]">
       {/* HEADING */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 mb-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-semibold leading-tight max-w-3xl">

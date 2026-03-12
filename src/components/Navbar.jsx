@@ -17,8 +17,10 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#" },
-    { name: "About", href: "#" },
-    { name: "Listing", href: "#" },
+    { name: "Listing", href: "#listing" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Reviews", href: "#review" },
   ];
 
   return (
@@ -55,9 +57,13 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop Contact Button */}
-        <button className="hidden md:block border border-white px-5 py-2 rounded-full text-md hover:bg-white hover:text-black transition cursor-pointer">
+        {/* Desktop Contact Button */}
+        <a 
+          href="#contact" 
+          className="hidden md:block border border-white px-5 py-2 rounded-full text-md hover:bg-white hover:text-black transition cursor-pointer"
+        >
           Contact
-        </button>
+        </a>
 
         {/* Hamburger Icon (Mobile Only) */}
         <div className="md:hidden flex items-center">
@@ -84,9 +90,14 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <button className="w-full border border-white px-5 py-2 rounded-full text-md mt-2">
-            Contact
-          </button>
+          {/* Mobile Contact Button */}
+<a 
+  href="#contact" 
+  onClick={() => setIsOpen(false)} // This closes the overlay after clicking
+  className="w-full border border-white px-5 py-2 rounded-full text-md mt-2 text-center block hover:bg-white hover:text-black transition"
+>
+  Contact
+</a>
         </div>
       </div>
     </header>

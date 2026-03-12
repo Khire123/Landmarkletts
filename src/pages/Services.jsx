@@ -94,9 +94,9 @@ const Services = () => {
 
   return (
     <section  id="services"
-    className="w-full bg-[#f4f1ea] py-10 px-6 lg:px-16 overflow-hidden font-[prompt]">
+    className="relative w-full bg-[#f4f1ea] pt-4 pb-20 px-6 lg:px-16 overflow-hidden font-[prompt]">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-10 mb-12">
-        <h1 className="text-4xl lg:text-[120px] leading-[0.9] font-serif text-black sm:-mt-10">
+        <h1 className="text-4xl lg:text-[120px] leading-[0.9] font-serif text-black">
           Our <br />
           Services
         </h1>

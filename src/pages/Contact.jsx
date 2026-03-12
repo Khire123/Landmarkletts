@@ -11,7 +11,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="w-full bg-[#f4f1ea] py-24 px-6 md:px-16 font-[prompt]">
+    <section id="contact" className="w-full bg-[#f4f1ea] py-24 px-6 md:px-16 font-[prompt]">
       {/* HEADING SECTION */}
       <div className="text-center mb-20">
         <span className="text-white text-[12px] font-bold tracking-[0.3em] uppercase bg-[#b28a4a] px-6 py-2 rounded-full shadow-sm">

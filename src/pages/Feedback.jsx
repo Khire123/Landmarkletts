@@ -132,7 +132,7 @@ const Feedback = () => {
   const realIndex = index % testimonials.length;
 
   return (
-    <section className="relative w-full py-20 bg-[#f4f1ea] overflow-hidden">
+    <section id="review" className="relative w-full py-20 bg-[#f4f1ea] overflow-hidden">
       {/* Background Grid */}
       <div
         className="absolute inset-0 z-0"

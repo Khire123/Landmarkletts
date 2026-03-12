@@ -199,7 +199,7 @@ import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
-    <section className="relative w-full min-h-screen bg-[#f4f1ea] font-[prompt] overflow-hidden">
+    <section id="about" className="relative w-full min-h-screen bg-[#f4f1ea] font-[prompt] overflow-hidden">
 
       <div className="flex flex-col md:flex-row min-h-screen">
 
