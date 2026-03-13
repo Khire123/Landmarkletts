@@ -89,12 +89,12 @@ export default function Hero() {
       </div>
 
       {/* Social Sidebar */}
-      <div className="relative flex justify-center pb-8 sm:absolute sm:right-6 sm:bottom-10 sm:flex-col z-20 gap-3 sm:gap-4">
+      {/* <div className="relative flex justify-center pb-8 sm:absolute sm:right-6 sm:bottom-10 sm:flex-col z-20 gap-3 sm:gap-4">
         <SocialIcon><SiX /></SocialIcon>
         <SocialIcon><FaLinkedinIn /></SocialIcon>
         <SocialIcon><FaFacebookF /></SocialIcon>
         <SocialIcon><FaInstagram /></SocialIcon>
-      </div>
+      </div> */}
     </div>
   );
 }

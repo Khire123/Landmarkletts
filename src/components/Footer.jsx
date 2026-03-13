@@ -33,7 +33,7 @@ const Footer = () => {
           </p>
 
           {/* Glass Social Icons */}
-          <div className="flex gap-4 mt-6">
+          {/* <div className="flex gap-4 mt-6">
             {[FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn].map(
               (Icon, i) => (
                 <div
@@ -56,7 +56,7 @@ const Footer = () => {
                 </div>
               )
             )}
-          </div>
+          </div> */}
         </div>
 
         {/* Quick Links */}
