@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Heart,
@@ -34,8 +34,10 @@ import agentPhoto from "../assets/agent-photo.jpg";
 import similar1 from "../assets/similar-1.jpg";
 import similar2 from "../assets/similar-2.jpg";
 import similar3 from "../assets/similar-3.jpg";
-
 export default function BeachPropertyDetail() {
+
+  const [mainImage, setMainImage] = useState(heroImage);
+
   return (
     <div className="w-full px-3 sm:px-6 lg:px-10 py-6">
 
@@ -43,26 +45,39 @@ export default function BeachPropertyDetail() {
 
 <section className="relative w-full rounded-3xl overflow-hidden">
 
+{/* ✅ MAIN IMAGE (DYNAMIC) */}
 <img
-src={heroImage}
-alt="Beachfront Villa"
-className="w-full h-[420px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[760px] object-cover"
+  src={mainImage}
+  alt="Beachfront Villa"
+  className="w-full h-[420px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[760px] object-cover"
 />
 
 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
+{/* Share Button */}
 <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex gap-3">
 
-<button className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/90 rounded-full shadow hover:scale-105 transition">
-<Heart size={18}/>
-</button>
-
-<button className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/90 rounded-full shadow hover:scale-105 transition">
-<Share2 size={18}/>
+<button
+  onClick={() => {
+    if (navigator.share) {
+      navigator.share({
+        title: "Luxury Apartment",
+        text: "Check out this amazing property!",
+        url: window.location.href,
+      });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied!");
+    }
+  }}
+  className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/90 rounded-full shadow hover:scale-105 transition"
+>
+  <Share2 size={18} />
 </button>
 
 </div>
 
+{/* Text */}
 <div className="absolute bottom-12 left-5 sm:left-10 text-white max-w-xl md:max-w-2xl">
 
 <p className="uppercase tracking-widest text-xs sm:text-sm text-gray-200 mb-2 sm:mb-4">
@@ -81,7 +96,35 @@ Wake up to breathtaking ocean views and enjoy private beach access in this stunn
 
 </div>
 
+{/* ✅ THUMBNAILS (WORKING) */}
+<div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 flex gap-2 sm:gap-4">
+
+  <img
+    src={heroImage}
+    onClick={() => setMainImage(heroImage)}
+    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
+  />
+
+  <img
+    src={interior1}
+    onClick={() => setMainImage(interior1)}
+    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
+  />
+
+  <img
+    src={interior2}
+    onClick={() => setMainImage(interior2)}
+    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
+  />
+
+ 
+
+</div>
+
 </section>
+
+{/* ================= END HERO SECTION ================= */}
+
 
 {/* ================= PROPERTY INFO SECTION ================= */}
 
