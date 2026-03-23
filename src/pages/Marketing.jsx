@@ -35,7 +35,9 @@ const Marketing = () => {
       easing: "ease-out-cubic",
     });
   }, []);
-
+  const goToContact = () => {
+    navigate("/", { state: { scrollTo: "contact" } });
+  };
   return (
     <div className="bg-[#f3efe9] text-gray-800">
       {/* HERO SECTION */}
@@ -263,8 +265,11 @@ const Marketing = () => {
             data-aos-delay="200"
             className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6"
           >
-            <button className="bg-[#C5A059] text-white px-8 py-3 rounded-md text-sm tracking-widest hover:opacity-90 transition">
-              START NOW
+            <button
+              onClick={goToContact}
+              className="bg-[#C5A059] text-white px-8 py-3 rounded-md text-sm tracking-widest hover:opacity-90 transition"
+            >
+              Contact Us
             </button>
 
             <button

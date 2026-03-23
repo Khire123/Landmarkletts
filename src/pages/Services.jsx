@@ -108,14 +108,14 @@ const Services = () => {
             results-driven strategies.
           </p>
 
-          <button className="group flex items-center justify-between border-2 border-gray-500 rounded-full px-6 py-3 w-[260px] sm:w-[300px] hover:bg-[#b28a4a] hover:border-black transition">
+          {/* <button className="group flex items-center justify-between border-2 border-gray-500 rounded-full px-6 py-3 w-[260px] sm:w-[300px] hover:bg-[#b28a4a] hover:border-black transition">
             <span className="text-black text-sm sm:text-base">
               See Our Services
             </span>
             <span className="ml-4 flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 group-hover:bg-black transition">
               <FiArrowUpRight className="text-black group-hover:text-white transition text-3xl" />
             </span>
-          </button>
+          </button> */}
         </div>
       </div>
 

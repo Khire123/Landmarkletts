@@ -9,8 +9,22 @@ import bgimg1 from "../assets/bg-img-1.png";
 import bgimg2 from "../assets/bg-img-2.png";
 import bgimg3 from "../assets/bg-img-3.jpeg";
 import Navbar from "../components/Navbar";
+import { useLocation } from "react-router-dom"
 
 export default function Hero() {
+  const location = useLocation();
+
+useEffect(() => {
+  if (location.state?.scrollTo) {
+    const el = document.getElementById(location.state.scrollTo);
+
+    if (el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }
+}, [location]);
   const images = [bgimg1, bgimg2, bgimg3];
   const [current, setCurrent] = useState(0);
 
@@ -23,7 +37,7 @@ export default function Hero() {
 
   return (
     <div className="relative w-full min-h-screen font-[prompt] overflow-x-hidden">
-      
+
       {/* Background Images */}
       {images.map((img, index) => (
         <img
@@ -49,7 +63,7 @@ export default function Hero() {
       {/* Hero Content */}
       <div className="relative z-10 flex items-center min-h-screen pt-32 pb-10">
         <div className="max-w-7xl mx-auto px-6 text-white w-full">
-          
+
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-semibold leading-tight mb-6 font-[poppins]">
             <i className="not-italic">
               Exceptional Homes. <br />
@@ -63,7 +77,15 @@ export default function Hero() {
           </p>
 
           <div className="md:ml-20">
-            <button className="bg-white/10 backdrop-blur-[2px] px-8 py-3 rounded-full border border-white/20 hover:bg-white hover:text-black transition cursor-pointer text-sm sm:text-base">
+            <button
+              onClick={() => {
+                document.getElementById("listing")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+                });
+              }}
+              className="bg-white/10 backdrop-blur-[2px] px-8 py-3 rounded-full border border-white/20 hover:bg-white hover:text-black transition cursor-pointer text-sm sm:text-base"
+            >
               Explore Listing
             </button>
           </div>
