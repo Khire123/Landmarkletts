@@ -1,0 +1,70 @@
+.whatsapp-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* ICON */
+.whatsapp-icon {
+  width: 60px;
+  height: 60px;
+  background: #25d366;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* CHAT BOX */
+.whatsapp-box {
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease;
+}
+
+/* HEADER */
+.whatsapp-header {
+  background: #25d366;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* BODY */
+.whatsapp-body {
+  padding: 15px;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.whatsapp-btn {
+  width: 100%;
+  padding: 12px;
+  background: #25d366;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 480px) {
+  .whatsapp-box {
+    width: 90vw;
+    right: 5vw;
+  }
+}

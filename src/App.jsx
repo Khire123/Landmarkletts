@@ -22,6 +22,9 @@ import BeachDetails from "./pages/BeachPropertyDetail";
 import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/Privacy&Policy";
 
+/* ✅ ADD THIS IMPORT */
+import WhatsAppWidget from "./components/WhatsAppWidget";
+
 const HomeStack = () => {
   const location = useLocation();
 
@@ -49,12 +52,11 @@ const HomeStack = () => {
   );
 };
 
-// 1. Create a helper component to hold the logic
+// Main Content
 const MainContent = () => {
-  const location = useLocation(); // Now this works because it's inside BrowserRouter
+  const location = useLocation();
   const hideFooterPaths = ["/privacy-policy", "/terms"];
   
-  // 2. Your If Statement logic
   let footerElement = <Footer />;
   if (hideFooterPaths.includes(location.pathname)) {
     footerElement = null;
@@ -78,6 +80,9 @@ const MainContent = () => {
       </Routes>
 
       {footerElement}
+
+      {/* ✅ ADDED - GLOBAL WHATSAPP */}
+      <WhatsAppWidget />
     </>
   );
 };
@@ -85,7 +90,6 @@ const MainContent = () => {
 function App() {
   return (
     <BrowserRouter>
-      {/* 3. Call the content component here */}
       <MainContent />
     </BrowserRouter>
   );
