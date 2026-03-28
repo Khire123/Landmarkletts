@@ -4,14 +4,14 @@ import "./whatsapp.css";
 const WhatsAppWidget = () => {
   const [open, setOpen] = useState(false);
 
-  // ✅ UPDATED NUMBER (with country code)
   const phoneNumber = "917039376721";
-
-  // ✅ UPDATED DEFAULT MESSAGE
-  const message = "Hi, I'm interested in your services. Can you share more details?";
+  const message =
+    "Hi, I'm interested in your services. Can you share more details?";
 
   const handleSend = () => {
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(url, "_blank");
   };
 
@@ -19,24 +19,45 @@ const WhatsAppWidget = () => {
     <div className="whatsapp-container">
       {open && (
         <div className="whatsapp-box">
-          <div className="whatsapp-header">
-            <p>Chat with us</p>
+          
+          {/* HEADER */}
+          <div className="wa-header">
+            <div>
+              <strong>Landmarklets</strong>
+              <p>Typically replies within minutes</p>
+            </div>
             <span onClick={() => setOpen(false)}>✕</span>
           </div>
 
-          <div className="whatsapp-body">
-            <p>Hello 👋</p>
-            <p>How can we help you?</p>
+          {/* BODY */}
+          <div className="wa-body">
+            <div className="wa-message">
+              👋 Hello! <br />
+              We're here to assist you with service inquiries, support,
+              or any other queries. <br />
+              How may we help you?
+            </div>
           </div>
 
-          <button className="whatsapp-btn" onClick={handleSend}>
-            Start Chat
-          </button>
+          {/* FOOTER BUTTON */}
+          <div className="wa-footer">
+            <button onClick={handleSend}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                alt="wa"
+              />
+              WhatsApp Us
+            </button>
+          </div>
         </div>
       )}
 
+      {/* FLOATING ICON */}
       <div className="whatsapp-icon" onClick={() => setOpen(!open)}>
-        💬
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+          alt="WhatsApp"
+        />
       </div>
     </div>
   );
