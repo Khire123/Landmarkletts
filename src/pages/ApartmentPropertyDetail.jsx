@@ -20,7 +20,7 @@ import {
   Star,
   MapPin,
   Bed,
-  CheckCircle
+  CheckCircle,
 } from "lucide-react";
 
 import heroImage from "../assets/similar-2.jpg";
@@ -35,223 +35,210 @@ import similar1 from "../assets/similar-1.jpg";
 import similar2 from "../assets/similar-2.jpg";
 import similar3 from "../assets/similar-3.jpg";
 export default function ApartmentPropertyDetail() {
-
   const [mainImage, setMainImage] = useState(heroImage);
 
   return (
     <div className="w-full px-3 sm:px-6 lg:px-10 py-6">
+      {/* ================= HERO SECTION ================= */}
 
-{/* ================= HERO SECTION ================= */}
+      <section className="relative w-full rounded-3xl overflow-hidden">
+        {/* ✅ MAIN IMAGE (DYNAMIC) */}
+        <img
+          src={mainImage}
+          alt="Luxury Apartment"
+          className="w-full h-[420px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[760px] object-cover"
+        />
 
-<section className="relative w-full rounded-3xl overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-{/* ✅ MAIN IMAGE (DYNAMIC) */}
-<img
-  src={mainImage}
-  alt="Luxury Apartment"
-  className="w-full h-[420px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[760px] object-cover"
-/>
+        {/* Share Button */}
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex gap-3">
+          <button
+            onClick={() => {
+              if (navigator.share) {
+                navigator.share({
+                  title: "Luxury Apartment",
+                  text: "Check out this amazing property!",
+                  url: window.location.href,
+                });
+              } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link copied!");
+              }
+            }}
+            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/90 rounded-full shadow hover:scale-105 transition"
+          >
+            <Share2 size={18} />
+          </button>
+        </div>
 
-<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+        {/* Text */}
+        <div className="absolute bottom-12 left-5 sm:left-10 text-white max-w-xl md:max-w-2xl">
+          <p className="uppercase tracking-widest text-xs sm:text-sm text-gray-200 mb-2 sm:mb-4">
+            Premium Apartment
+          </p>
 
-{/* Share Button */}
-<div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex gap-3">
+          <h1 className="font-serif leading-tight font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-3 sm:mb-4">
+            Luxury Living
+            <br className="hidden sm:block" />
+            in the City Skyline
+          </h1>
 
-<button
-  onClick={() => {
-    if (navigator.share) {
-      navigator.share({
-        title: "Luxury Apartment",
-        text: "Check out this amazing property!",
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied!");
-    }
-  }}
-  className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/90 rounded-full shadow hover:scale-105 transition"
->
-  <Share2 size={18} />
-</button>
+          <p className="text-sm sm:text-base md:text-lg text-gray-200 max-w-md sm:max-w-lg">
+            Experience modern apartment living with panoramic skyline views and
+            world-class amenities.
+          </p>
+        </div>
 
-</div>
+        {/* ✅ THUMBNAILS (ADDED + WORKING) */}
+        <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 flex gap-2 sm:gap-4">
+          <img
+            src={heroImage}
+            onClick={() => setMainImage(heroImage)}
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
+          />
 
-{/* Text */}
-<div className="absolute bottom-12 left-5 sm:left-10 text-white max-w-xl md:max-w-2xl">
+          <img
+            src={interior1}
+            onClick={() => setMainImage(interior1)}
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
+          />
 
-<p className="uppercase tracking-widest text-xs sm:text-sm text-gray-200 mb-2 sm:mb-4">
-Premium Apartment
-</p>
+          <img
+            src={pool}
+            onClick={() => setMainImage(pool)}
+            className="hidden sm:block w-20 h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
+          />
+        </div>
+      </section>
 
-<h1 className="font-serif leading-tight font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-3 sm:mb-4">
-Luxury Living
-<br className="hidden sm:block"/>
-in the City Skyline
-</h1>
+      {/* ================= END HERO SECTION ================= */}
 
-<p className="text-sm sm:text-base md:text-lg text-gray-200 max-w-md sm:max-w-lg">
-Experience modern apartment living with panoramic skyline views and world-class amenities.
-</p>
+      {/* ================= PROPERTY INFO SECTION ================= */}
 
-</div>
+      <section className="max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 bg-[#f6f3ed] rounded-2xl p-6 sm:p-8">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full tracking-wider">
+              FOR SALE
+            </span>
 
-{/* ✅ THUMBNAILS (ADDED + WORKING) */}
-<div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 flex gap-2 sm:gap-4">
+            <span className="text-gray-600 text-sm tracking-wider">
+              APARTMENT
+            </span>
+          </div>
 
-  <img
-    src={heroImage}
-    onClick={() => setMainImage(heroImage)}
-    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
-  />
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3">
+            Palm Luxury Apartment
+          </h2>
 
-  <img
-    src={interior1}
-    onClick={() => setMainImage(interior1)}
-    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
-  />
+          <p className="text-gray-600 mb-6">📍 Palm Jumeirah, Dubai</p>
 
-  <img
-    src={pool}
-    onClick={() => setMainImage(pool)}
-    className="hidden sm:block w-20 h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
-  />
+          <div className="flex flex-wrap gap-3 mb-8">
+            <div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
+              3 Bedrooms
+            </div>
 
-</div>
+            <div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
+              3 Bathroom
+            </div>
 
-</section>
+            <div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
+              2,100 sq ft
+            </div>
 
-{/* ================= END HERO SECTION ================= */}
+            <div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
+              2 Cars
+            </div>
 
+            <div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
+              Built 2023
+            </div>
+          </div>
 
-{/* ================= PROPERTY INFO SECTION ================= */}
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={() => {
+                const phoneNumber = "917039376721";
+                const message =
+                  "Hi, I am interested in Palm Luxury Apartment. Please share more details.";
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, "_blank");
+              }}
+              className="bg-[#c79b5d] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition"
+            >
+              Contact Agent
+            </button>
 
-<section className="max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <button className="border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition">
+              Schedule Viewing
+            </button>
+          </div>
+        </div>
 
-<div className="lg:col-span-2 bg-[#f6f3ed] rounded-2xl p-6 sm:p-8">
+        {/* PRICE CARD */}
 
-<div className="flex items-center gap-3 mb-4">
-<span className="bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full tracking-wider">
-FOR SALE
-</span>
+        <div className="bg-[#f6f3ed] rounded-2xl p-6 sm:p-8">
+          <p className="text-gray-500 uppercase text-sm tracking-wider mb-2">
+            Asking Price
+          </p>
 
-<span className="text-gray-600 text-sm tracking-wider">
-APARTMENT
-</span>
-</div>
+          <h3 className="text-3xl sm:text-4xl font-semibold text-[#c79b5d] mb-6">
+            £2,100,000
+          </h3>
 
-<h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3">
-Palm Luxury Apartment
-</h2>
+          <div className="flex justify-between border-t border-gray-300 py-4 text-sm">
+            <span className="text-gray-600">Mortgage Estimate</span>
+            <span className="font-medium">£6,200/mo</span>
+          </div>
 
-<p className="text-gray-600 mb-6">
-📍 Palm Jumeirah, Dubai
-</p>
+          <div className="flex justify-between border-t border-gray-300 py-4 text-sm">
+            <span className="text-gray-600">Property Tax</span>
+            <span className="font-medium">£4,500/yr</span>
+          </div>
 
-<div className="flex flex-wrap gap-3 mb-8">
+          <div className="flex justify-between border-t border-gray-300 py-4 text-sm">
+            <span className="text-gray-600">Monthly Payment</span>
+            <span className="font-medium">£6,950/mo</span>
+          </div>
+        </div>
+      </section>
 
-<div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
-3 Bedrooms
-</div>
+      {/* ================= PROPERTY OVERVIEW ================= */}
 
-<div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
-3 Bathroom
-</div>
+      <section className="max-w-7xl mx-auto mt-10">
+        <div className="bg-[#f6f3ed] rounded-2xl p-6 sm:p-8 lg:p-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6">
+            Apartment Overview
+          </h2>
 
-<div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
-2,100 sq ft
-</div>
+          <div className="space-y-5 text-gray-600 text-sm sm:text-base leading-relaxed">
+            <p>
+              Located in the prestigious Palm Jumeirah, this luxury apartment
+              offers unmatched views of the Arabian Gulf and Dubai skyline.
+            </p>
 
-<div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
-2 Cars
-</div>
+            <p>
+              The apartment features contemporary interiors, floor-to-ceiling
+              windows, and an open-plan living area designed for modern
+              lifestyles.
+            </p>
 
-<div className="bg-white rounded-full px-4 py-2 text-sm shadow-sm">
-Built 2023
-</div>
+            <p>
+              Residents enjoy private beach access, infinity pools, luxury gyms,
+              and exclusive concierge services.
+            </p>
 
-</div>
+            <p>
+              With world-class restaurants, shopping destinations, and vibrant
+              nightlife nearby, the property offers the ultimate urban
+              lifestyle.
+            </p>
+          </div>
+        </div>
+      </section>
 
-<div className="flex flex-wrap gap-4">
-
-<button className="bg-[#c79b5d] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition">
-Contact Agent
-</button>
-
-<button className="border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition">
-Schedule Viewing
-</button>
-
-</div>
-
-</div>
-
-{/* PRICE CARD */}
-
-<div className="bg-[#f6f3ed] rounded-2xl p-6 sm:p-8">
-
-<p className="text-gray-500 uppercase text-sm tracking-wider mb-2">
-Asking Price
-</p>
-
-<h3 className="text-3xl sm:text-4xl font-semibold text-[#c79b5d] mb-6">
-£2,100,000
-</h3>
-
-<div className="flex justify-between border-t border-gray-300 py-4 text-sm">
-<span className="text-gray-600">Mortgage Estimate</span>
-<span className="font-medium">£6,200/mo</span>
-</div>
-
-<div className="flex justify-between border-t border-gray-300 py-4 text-sm">
-<span className="text-gray-600">Property Tax</span>
-<span className="font-medium">£4,500/yr</span>
-</div>
-
-<div className="flex justify-between border-t border-gray-300 py-4 text-sm">
-<span className="text-gray-600">Monthly Payment</span>
-<span className="font-medium">£6,950/mo</span>
-</div>
-
-</div>
-
-</section>
-
-{/* ================= PROPERTY OVERVIEW ================= */}
-
-<section className="max-w-7xl mx-auto mt-10">
-
-<div className="bg-[#f6f3ed] rounded-2xl p-6 sm:p-8 lg:p-10">
-
-<h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6">
-Apartment Overview
-</h2>
-
-<div className="space-y-5 text-gray-600 text-sm sm:text-base leading-relaxed">
-
-<p>
-Located in the prestigious Palm Jumeirah, this luxury apartment offers unmatched views of the Arabian Gulf and Dubai skyline.
-</p>
-
-<p>
-The apartment features contemporary interiors, floor-to-ceiling windows, and an open-plan living area designed for modern lifestyles.
-</p>
-
-<p>
-Residents enjoy private beach access, infinity pools, luxury gyms, and exclusive concierge services.
-</p>
-
-<p>
-With world-class restaurants, shopping destinations, and vibrant nightlife nearby, the property offers the ultimate urban lifestyle.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-{/* ================= PREMIUM AMENITIES SECTION ================= */}
+      {/* ================= PREMIUM AMENITIES SECTION ================= */}
 
       <section className="max-w-7xl mx-auto mt-16">
         {/* Section Header */}
@@ -346,509 +333,325 @@ With world-class restaurants, shopping destinations, and vibrant nightlife nearb
 
       {/* ================= PROPERTY GALLERY SECTION ================= */}
 
-<section className="max-w-7xl mx-auto mt-20">
-
-  {/* Section Header */}
-  <div className="text-center mb-12">
-    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
-      Property Gallery
-    </h2>
-
-    <p className="text-gray-500 text-sm sm:text-base">
-      Explore every corner of this magnificent residence
-    </p>
-  </div>
-
-
-  {/* Gallery Grid */}
-  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-    {/* Large Image (Left) */}
-    <div className="lg:col-span-2">
-      <img
-        src={hero}
-        alt="property exterior"
-        className="w-full h-[300px] sm:h-[420px] lg:h-[520px] object-cover rounded-2xl"
-      />
-    </div>
-
-
-    {/* Right Column */}
-    <div className="grid grid-rows-2 gap-6">
-
-      {/* Interior Living Room */}
-      <img
-        src={interior1}
-        alt="living room"
-        className="w-full h-[200px] sm:h-[240px] lg:h-[250px] object-cover rounded-2xl"
-      />
-
-      {/* Kitchen */}
-      <img
-        src={interior2}
-        alt="kitchen"
-        className="w-full h-[200px] sm:h-[240px] lg:h-[250px] object-cover rounded-2xl"
-      />
-
-    </div>
-
-
-    {/* Bottom Left Image */}
-    <img
-      src={interior3}
-      alt="bedroom"
-      className="w-full h-[220px] sm:h-[260px] object-cover rounded-2xl"
-    />
-
-
-    {/* Bottom Right Image */}
-    <img
-      src={pool}
-      alt="pool"
-      className="w-full h-[220px] sm:h-[260px] object-cover rounded-2xl"
-    />
-
-  </div>
-
-</section>
-
-{/* ================= END PROPERTY GALLERY SECTION ================= */}
-
-
-
-{/* ================= PROPERTY LOCATION SECTION ================= */}
-
-<section className="max-w-7xl mx-auto mt-20">
-
-  {/* Section Header */}
-  <div className="text-center mb-10">
-    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-      Property Location
-    </h2>
-
-    <p className="text-gray-500 mt-2">
-      South Kensington, London
-    </p>
-  </div>
-
-
-  {/* Location Layout */}
-  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-    {/* Google Map */}
-    <div className="lg:col-span-2 rounded-2xl overflow-hidden shadow-sm">
-
-      {/* Google Maps iframe */}
-      <iframe
-        title="South Kensington Map"
-        src="https://www.google.com/maps?q=South+Kensington+London&output=embed"
-        className="w-full h-[350px] sm:h-[420px] lg:h-[450px] border-0"
-        loading="lazy"
-      ></iframe>
-
-    </div>
-
-
-    {/* Nearby Amenities */}
-    <div>
-
-      <h3 className="text-lg font-semibold mb-6">
-        Nearby Amenities
-      </h3>
-
-
-{/* ================= NEARBY AMENITIES ================= */}
-
-<div className="flex flex-col gap-4">
-
-  {/* Westminster Academy */}
-  <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
-
-    <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
-      <GraduationCap className="text-[#c79b5d]" size={22} />
-    </div>
-
-    <div>
-      <p className="font-medium text-sm">
-        Westminster Academy
-      </p>
-      <p className="text-xs text-gray-500">
-        0.5 miles
-      </p>
-    </div>
-
-  </div>
-
-
-  {/* Royal London Hospital */}
-  <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
-
-    <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
-      <Building2 className="text-[#c79b5d]" size={22} />
-    </div>
-
-    <div>
-      <p className="font-medium text-sm">
-        Royal London Hospital
-      </p>
-      <p className="text-xs text-gray-500">
-        1.2 miles
-      </p>
-    </div>
-
-  </div>
-
-
-  {/* South Kensington Station */}
-  <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
-
-    <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
-      <Train className="text-[#c79b5d]" size={22} />
-    </div>
-
-    <div>
-      <p className="font-medium text-sm">
-        South Kensington Station
-      </p>
-      <p className="text-xs text-gray-500">
-        0.3 miles
-      </p>
-    </div>
-
-  </div>
-
-
-  {/* The Ivy Chelsea */}
-  <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
-
-    <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
-      <UtensilsCrossed className="text-[#c79b5d]" size={22} />
-    </div>
-
-    <div>
-      <p className="font-medium text-sm">
-        The Ivy Chelsea
-      </p>
-      <p className="text-xs text-gray-500">
-        0.4 miles
-      </p>
-    </div>
-
-  </div>
-
-</div>
-
-    </div>
-
-  </div>
-
-</section>
-
-{/* ================= END PROPERTY LOCATION SECTION ================= */}   
-
-{/* ================= AGENT CONTACT SECTION ================= */}
-
-<section className="max-w-7xl mx-auto mt-20">
-
-  {/* Card Container */}
-  <div className="bg-[#f6f3ed] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 border border-[#e6e1d8]">
-
-    {/* Agent Photo */}
-    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex-shrink-0">
-      <img
-        src={agentPhoto}
-        alt="Agent"
-        className="w-full h-full object-cover"
-      />
-    </div>
-
-
-    {/* Agent Details */}
-    <div className="flex flex-col flex-1 text-center md:text-left">
-
-      {/* Name */}
-      <h3 className="text-xl sm:text-2xl font-semibold">
-        James Harrison
-      </h3>
-
-      {/* Position */}
-      <p className="text-[#c79b5d] text-sm mb-3">
-        Senior Property Consultant
-      </p>
-
-
-      {/* Contact Info Row */}
-      <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-gray-600 mb-4">
-
-        {/* Phone */}
-        <div className="flex items-center gap-2">
-          <Phone size={16} className="text-[#c79b5d]" />
-          <span>+44 20 7946 0958</span>
+      <section className="max-w-7xl mx-auto mt-20">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
+            Property Gallery
+          </h2>
+
+          <p className="text-gray-500 text-sm sm:text-base">
+            Explore every corner of this magnificent residence
+          </p>
         </div>
 
-        {/* Email */}
-        <div className="flex items-center gap-2">
-          <Mail size={16} className="text-[#c79b5d]" />
-          <span>james@prestige-estates.co.uk</span>
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Large Image (Left) */}
+          <div className="lg:col-span-2">
+            <img
+              src={hero}
+              alt="property exterior"
+              className="w-full h-[300px] sm:h-[420px] lg:h-[520px] object-cover rounded-2xl"
+            />
+          </div>
+
+          {/* Right Column */}
+          <div className="grid grid-rows-2 gap-6">
+            {/* Interior Living Room */}
+            <img
+              src={interior1}
+              alt="living room"
+              className="w-full h-[200px] sm:h-[240px] lg:h-[250px] object-cover rounded-2xl"
+            />
+
+            {/* Kitchen */}
+            <img
+              src={interior2}
+              alt="kitchen"
+              className="w-full h-[200px] sm:h-[240px] lg:h-[250px] object-cover rounded-2xl"
+            />
+          </div>
+
+          {/* Bottom Left Image */}
+          <img
+            src={interior3}
+            alt="bedroom"
+            className="w-full h-[220px] sm:h-[260px] object-cover rounded-2xl"
+          />
+
+          {/* Bottom Right Image */}
+          <img
+            src={pool}
+            alt="pool"
+            className="w-full h-[220px] sm:h-[260px] object-cover rounded-2xl"
+          />
+        </div>
+      </section>
+
+      {/* ================= END PROPERTY GALLERY SECTION ================= */}
+
+      {/* ================= PROPERTY LOCATION SECTION ================= */}
+
+      <section className="max-w-7xl mx-auto mt-20">
+        {/* Section Header */}
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+            Property Location
+          </h2>
+
+          <p className="text-gray-500 mt-2">South Kensington, London</p>
         </div>
 
-        {/* Experience */}
-        <div className="flex items-center gap-2">
-          <Star size={16} className="text-[#c79b5d]" />
-          <span>15 Years Experience</span>
+        {/* Location Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Google Map */}
+          <div className="lg:col-span-2 rounded-2xl overflow-hidden shadow-sm">
+            {/* Google Maps iframe */}
+            <iframe
+              title="South Kensington Map"
+              src="https://www.google.com/maps?q=South+Kensington+London&output=embed"
+              className="w-full h-[350px] sm:h-[420px] lg:h-[450px] border-0"
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          {/* Nearby Amenities */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Nearby Amenities</h3>
+
+            {/* ================= NEARBY AMENITIES ================= */}
+
+            <div className="flex flex-col gap-4">
+              {/* Westminster Academy */}
+              <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
+                <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
+                  <GraduationCap className="text-[#c79b5d]" size={22} />
+                </div>
+
+                <div>
+                  <p className="font-medium text-sm">Westminster Academy</p>
+                  <p className="text-xs text-gray-500">0.5 miles</p>
+                </div>
+              </div>
+
+              {/* Royal London Hospital */}
+              <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
+                <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
+                  <Building2 className="text-[#c79b5d]" size={22} />
+                </div>
+
+                <div>
+                  <p className="font-medium text-sm">Royal London Hospital</p>
+                  <p className="text-xs text-gray-500">1.2 miles</p>
+                </div>
+              </div>
+
+              {/* South Kensington Station */}
+              <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
+                <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
+                  <Train className="text-[#c79b5d]" size={22} />
+                </div>
+
+                <div>
+                  <p className="font-medium text-sm">
+                    South Kensington Station
+                  </p>
+                  <p className="text-xs text-gray-500">0.3 miles</p>
+                </div>
+              </div>
+
+              {/* The Ivy Chelsea */}
+              <div className="bg-[#f6f3ed] rounded-xl p-4 flex items-center gap-4 border border-[#e6e1d8]">
+                <div className="w-12 h-12 rounded-full bg-[#efe7db] flex items-center justify-center">
+                  <UtensilsCrossed className="text-[#c79b5d]" size={22} />
+                </div>
+
+                <div>
+                  <p className="font-medium text-sm">The Ivy Chelsea</p>
+                  <p className="text-xs text-gray-500">0.4 miles</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= END PROPERTY LOCATION SECTION ================= */}
+
+      {/* ================= SIMILAR PROPERTIES SECTION ================= */}
+
+      <section className="max-w-7xl mx-auto mt-20">
+        {/* Section Title */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+            Similar Properties
+          </h2>
+
+          <p className="text-gray-500 mt-2">You might also be interested in</p>
         </div>
 
-      </div>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* ===== CARD 1 ===== */}
+          <div className="bg-[#f6f3ed] rounded-2xl overflow-hidden border border-[#e6e1d8] hover:shadow-lg transition">
+            {/* Image */}
+            <div className="relative">
+              <img
+                src={similar1}
+                alt="Sky Penthouse"
+                className="w-full h-[220px] object-cover"
+              />
 
+              {/* Sale Badge */}
+              <span className="absolute top-3 left-3 bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full">
+                FOR SALE
+              </span>
+            </div>
 
-      {/* Contact Button */}
-      <button className="bg-[#c79b5d] text-white px-6 py-3 rounded-full w-fit hover:opacity-90 transition flex items-center gap-2 mx-auto md:mx-0">
+            {/* Content */}
+            <div className="p-5">
+              {/* Price */}
+              <p className="text-[#c79b5d] font-semibold mb-1">£2,850,000</p>
 
-        <Phone size={18} />
+              {/* Title */}
+              <h3 className="font-semibold text-lg mb-2">Sky Penthouse</h3>
 
-        Contact Agent
+              {/* Location */}
+              <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
+                <MapPin size={16} className="text-gray-400" />
+                Canary Wharf, London
+              </div>
 
-      </button>
+              {/* Beds */}
+              <div className="inline-flex items-center gap-2 bg-[#efe7db] px-3 py-1 rounded-full text-sm text-gray-700 mb-5">
+                <Bed size={16} className="text-[#c79b5d]" />4 Beds
+              </div>
 
+              {/* Button */}
+              <button className="w-full border border-gray-300 rounded-full py-2 text-sm hover:bg-gray-100 transition">
+                Quick View
+              </button>
+            </div>
+          </div>
+
+          {/* ===== CARD 2 ===== */}
+          <div className="bg-[#f6f3ed] rounded-2xl overflow-hidden border border-[#e6e1d8] hover:shadow-lg transition">
+            <div className="relative">
+              <img
+                src={similar2}
+                alt="Mayfair Residence"
+                className="w-full h-[220px] object-cover"
+              />
+
+              <span className="absolute top-3 left-3 bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full">
+                FOR SALE
+              </span>
+            </div>
+
+            <div className="p-5">
+              <p className="text-[#c79b5d] font-semibold mb-1">£1,750,000</p>
+
+              <h3 className="font-semibold text-lg mb-2">
+                The Mayfair Residence
+              </h3>
+
+              <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
+                <MapPin size={16} className="text-gray-400" />
+                Mayfair, London
+              </div>
+
+              <div className="inline-flex items-center gap-2 bg-[#efe7db] px-3 py-1 rounded-full text-sm text-gray-700 mb-5">
+                <Bed size={16} className="text-[#c79b5d]" />3 Beds
+              </div>
+
+              <button className="w-full border border-gray-300 rounded-full py-2 text-sm hover:bg-gray-100 transition">
+                Quick View
+              </button>
+            </div>
+          </div>
+
+          {/* ===== CARD 3 ===== */}
+          <div className="bg-[#f6f3ed] rounded-2xl overflow-hidden border border-[#e6e1d8] hover:shadow-lg transition">
+            <div className="relative">
+              <img
+                src={similar3}
+                alt="Cotswolds Manor"
+                className="w-full h-[220px] object-cover"
+              />
+
+              <span className="absolute top-3 left-3 bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full">
+                FOR SALE
+              </span>
+            </div>
+
+            <div className="p-5">
+              <p className="text-[#c79b5d] font-semibold mb-1">£3,200,000</p>
+
+              <h3 className="font-semibold text-lg mb-2">Cotswolds Manor</h3>
+
+              <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
+                <MapPin size={16} className="text-gray-400" />
+                Gloucestershire
+              </div>
+
+              <div className="inline-flex items-center gap-2 bg-[#efe7db] px-3 py-1 rounded-full text-sm text-gray-700 mb-5">
+                <Bed size={16} className="text-[#c79b5d]" />6 Beds
+              </div>
+
+              <button className="w-full border border-gray-300 rounded-full py-2 text-sm hover:bg-gray-100 transition">
+                Quick View
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= END SIMILAR PROPERTIES SECTION ================= */}
+      {/* ================= TRUSTED CLIENTS SECTION ================= */}
+
+      <section className="max-w-7xl mx-auto mt-20">
+        {/* Gold Background Container */}
+        <div className="bg-gradient-to-r from-[#c79b5d] to-[#d6ad72] rounded-3xl px-6 sm:px-10 lg:px-16 py-12 text-white text-center">
+          {/* Heading */}
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-10">
+            Trusted by Discerning Clients Worldwide
+          </h2>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+            {/* Stat 1 */}
+            <div className="flex flex-col items-center gap-2">
+              <CheckCircle size={22} className="text-white/90" />
+              <h3 className="text-2xl sm:text-3xl font-semibold">100%</h3>
+              <p className="text-sm text-white/90">Client Satisfaction</p>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex flex-col items-center gap-2">
+              <CheckCircle size={22} className="text-white/90" />
+              <h3 className="text-2xl sm:text-3xl font-semibold">500+</h3>
+              <p className="text-sm text-white/90">Properties Sold</p>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex flex-col items-center gap-2">
+              <CheckCircle size={22} className="text-white/90" />
+              <h3 className="text-2xl sm:text-3xl font-semibold">150+</h3>
+              <p className="text-sm text-white/90">Cities & Countries</p>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="flex flex-col items-center gap-2">
+              <CheckCircle size={22} className="text-white/90" />
+              <h3 className="text-2xl sm:text-3xl font-semibold">200+</h3>
+              <p className="text-sm text-white/90">Positive Reviews</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= END TRUSTED CLIENTS SECTION ================= */}
     </div>
-
-  </div>
-
-</section>
-
-{/* ================= END AGENT CONTACT SECTION ================= */}
-
-{/* ================= SIMILAR PROPERTIES SECTION ================= */}
-
-<section className="max-w-7xl mx-auto mt-20">
-
-  {/* Section Title */}
-  <div className="text-center mb-12">
-    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
-      Similar Properties
-    </h2>
-
-    <p className="text-gray-500 mt-2">
-      You might also be interested in
-    </p>
-  </div>
-
-
-  {/* Cards Grid */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-
-    {/* ===== CARD 1 ===== */}
-    <div className="bg-[#f6f3ed] rounded-2xl overflow-hidden border border-[#e6e1d8] hover:shadow-lg transition">
-
-      {/* Image */}
-      <div className="relative">
-        <img
-          src={similar1}
-          alt="Sky Penthouse"
-          className="w-full h-[220px] object-cover"
-        />
-
-        {/* Sale Badge */}
-        <span className="absolute top-3 left-3 bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full">
-          FOR SALE
-        </span>
-      </div>
-
-
-      {/* Content */}
-      <div className="p-5">
-
-        {/* Price */}
-        <p className="text-[#c79b5d] font-semibold mb-1">
-          £2,850,000
-        </p>
-
-        {/* Title */}
-        <h3 className="font-semibold text-lg mb-2">
-          Sky Penthouse
-        </h3>
-
-        {/* Location */}
-        <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
-          <MapPin size={16} className="text-gray-400" />
-          Canary Wharf, London
-        </div>
-
-        {/* Beds */}
-        <div className="inline-flex items-center gap-2 bg-[#efe7db] px-3 py-1 rounded-full text-sm text-gray-700 mb-5">
-          <Bed size={16} className="text-[#c79b5d]" />
-          4 Beds
-        </div>
-
-        {/* Button */}
-        <button className="w-full border border-gray-300 rounded-full py-2 text-sm hover:bg-gray-100 transition">
-          Quick View
-        </button>
-
-      </div>
-
-    </div>
-
-
-
-    {/* ===== CARD 2 ===== */}
-    <div className="bg-[#f6f3ed] rounded-2xl overflow-hidden border border-[#e6e1d8] hover:shadow-lg transition">
-
-      <div className="relative">
-        <img
-          src={similar2}
-          alt="Mayfair Residence"
-          className="w-full h-[220px] object-cover"
-        />
-
-        <span className="absolute top-3 left-3 bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full">
-          FOR SALE
-        </span>
-      </div>
-
-      <div className="p-5">
-
-        <p className="text-[#c79b5d] font-semibold mb-1">
-          £1,750,000
-        </p>
-
-        <h3 className="font-semibold text-lg mb-2">
-          The Mayfair Residence
-        </h3>
-
-        <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
-          <MapPin size={16} className="text-gray-400" />
-          Mayfair, London
-        </div>
-
-        <div className="inline-flex items-center gap-2 bg-[#efe7db] px-3 py-1 rounded-full text-sm text-gray-700 mb-5">
-          <Bed size={16} className="text-[#c79b5d]" />
-          3 Beds
-        </div>
-
-        <button className="w-full border border-gray-300 rounded-full py-2 text-sm hover:bg-gray-100 transition">
-          Quick View
-        </button>
-
-      </div>
-
-    </div>
-
-
-
-    {/* ===== CARD 3 ===== */}
-    <div className="bg-[#f6f3ed] rounded-2xl overflow-hidden border border-[#e6e1d8] hover:shadow-lg transition">
-
-      <div className="relative">
-        <img
-          src={similar3}
-          alt="Cotswolds Manor"
-          className="w-full h-[220px] object-cover"
-        />
-
-        <span className="absolute top-3 left-3 bg-[#c79b5d] text-white text-xs px-3 py-1 rounded-full">
-          FOR SALE
-        </span>
-      </div>
-
-      <div className="p-5">
-
-        <p className="text-[#c79b5d] font-semibold mb-1">
-          £3,200,000
-        </p>
-
-        <h3 className="font-semibold text-lg mb-2">
-          Cotswolds Manor
-        </h3>
-
-        <div className="flex items-center gap-2 text-gray-500 text-sm mb-4">
-          <MapPin size={16} className="text-gray-400" />
-          Gloucestershire
-        </div>
-
-        <div className="inline-flex items-center gap-2 bg-[#efe7db] px-3 py-1 rounded-full text-sm text-gray-700 mb-5">
-          <Bed size={16} className="text-[#c79b5d]" />
-          6 Beds
-        </div>
-
-        <button className="w-full border border-gray-300 rounded-full py-2 text-sm hover:bg-gray-100 transition">
-          Quick View
-        </button>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-{/* ================= END SIMILAR PROPERTIES SECTION ================= */}
-{/* ================= TRUSTED CLIENTS SECTION ================= */}
-
-<section className="max-w-7xl mx-auto mt-20">
-
-  {/* Gold Background Container */}
-  <div className="bg-gradient-to-r from-[#c79b5d] to-[#d6ad72] rounded-3xl px-6 sm:px-10 lg:px-16 py-12 text-white text-center">
-
-    {/* Heading */}
-    <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-10">
-      Trusted by Discerning Clients Worldwide
-    </h2>
-
-
-    {/* Stats Grid */}
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-
-      {/* Stat 1 */}
-      <div className="flex flex-col items-center gap-2">
-        <CheckCircle size={22} className="text-white/90" />
-        <h3 className="text-2xl sm:text-3xl font-semibold">100%</h3>
-        <p className="text-sm text-white/90">
-          Client Satisfaction
-        </p>
-      </div>
-
-
-      {/* Stat 2 */}
-      <div className="flex flex-col items-center gap-2">
-        <CheckCircle size={22} className="text-white/90" />
-        <h3 className="text-2xl sm:text-3xl font-semibold">500+</h3>
-        <p className="text-sm text-white/90">
-          Properties Sold
-        </p>
-      </div>
-
-
-      {/* Stat 3 */}
-      <div className="flex flex-col items-center gap-2">
-        <CheckCircle size={22} className="text-white/90" />
-        <h3 className="text-2xl sm:text-3xl font-semibold">150+</h3>
-        <p className="text-sm text-white/90">
-          Cities & Countries
-        </p>
-      </div>
-
-
-      {/* Stat 4 */}
-      <div className="flex flex-col items-center gap-2">
-        <CheckCircle size={22} className="text-white/90" />
-        <h3 className="text-2xl sm:text-3xl font-semibold">200+</h3>
-        <p className="text-sm text-white/90">
-          Positive Reviews
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-{/* ================= END TRUSTED CLIENTS SECTION ================= */}
-
-</div>
   );
 }
