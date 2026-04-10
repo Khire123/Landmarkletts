@@ -181,7 +181,7 @@ export default function VillaPropertyDetail() {
             {/* Contact Button */}
             <button
               onClick={() => {
-                const phoneNumber = "917039376721"; // India code added
+                const phoneNumber = "918082246786"; // India code added
                 const message = `Hi, I am interested in The Kensington Residence. Please share more details.`;
                 const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                 window.open(url, "_blank");

@@ -38,7 +38,7 @@ export default function ApartmentPropertyDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleWhatsAppContact = () => {
-    const phoneNumber = "917039376721";
+    const phoneNumber = "918082246786";
     const message = "Hi, I am interested in Palm Luxury Apartment. Please share more details.";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
