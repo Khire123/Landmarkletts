@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 import {
@@ -35,16 +34,15 @@ import similar1 from "../assets/similar-1.jpg";
 import similar2 from "../assets/similar-2.jpg";
 import similar3 from "../assets/similar-3.jpg";
 import { CheckCircle } from "lucide-react";
+import ScheduleViewingModal from "../components/ScheduleViewingModal";
 export default function VillaPropertyDetail() {
-
   const [mainImage, setMainImage] = useState(heroImage);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="w-full px-3 sm:px-6 lg:px-10 py-6">
-
       {/* ================= HERO SECTION ================= */}
       <section className="relative w-full rounded-3xl overflow-hidden">
-
         {/* ✅ MAIN IMAGE (FIXED) */}
         <img
           src={mainImage}
@@ -104,7 +102,6 @@ export default function VillaPropertyDetail() {
 
         {/* ✅ THUMBNAILS (WORKING) */}
         <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 flex gap-2 sm:gap-4">
-
           <img
             src={heroImage}
             onClick={() => setMainImage(heroImage)}
@@ -122,12 +119,9 @@ export default function VillaPropertyDetail() {
             onClick={() => setMainImage(pool)}
             className="hidden sm:block w-20 h-20 md:w-24 md:h-24 object-cover rounded-xl border border-white/40 cursor-pointer hover:scale-105 transition"
           />
-
         </div>
-
       </section>
       {/* ================= END HERO SECTION ================= */}
-
 
       {/* ================= PROPERTY INFO SECTION ================= */}
       <section className="max-w-7xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -185,14 +179,31 @@ export default function VillaPropertyDetail() {
           {/* -------- ACTION BUTTONS -------- */}
           <div className="flex flex-wrap gap-4">
             {/* Contact Button */}
-            <button className="bg-[#c79b5d] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition">
-              Contact Agent
+            <button
+              onClick={() => {
+                const phoneNumber = "917039376721"; // India code added
+                const message = `Hi, I am interested in The Kensington Residence. Please share more details.`;
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, "_blank");
+              }}
+              className="bg-[#c79b5d] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 transition"
+            >
+              Contact 
             </button>
 
             {/* Schedule Button */}
-            <button className="border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition">
-              Schedule Viewing
-            </button>
+           <button 
+                   onClick={() => setIsModalOpen(true)}
+                   className="border border-gray-300 px-6 py-3 rounded-full font-medium"
+                 >
+                   Schedule Viewing
+                 </button>
+                 
+                 <ScheduleViewingModal 
+                   isOpen={isModalOpen} 
+                   onClose={() => setIsModalOpen(false)} 
+                   propertyName="The Kensington Residence" // Change this per file
+                 />
           </div>
         </div>
 
@@ -522,64 +533,6 @@ export default function VillaPropertyDetail() {
       </section>
 
       {/* ================= END PROPERTY LOCATION SECTION ================= */}
-
-      {/* ================= AGENT CONTACT SECTION ================= */}
-
-      <section className="max-w-7xl mx-auto mt-20">
-        {/* Card Container */}
-        <div className="bg-[#f6f3ed] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 border border-[#e6e1d8]">
-          {/* Agent Photo */}
-          <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex-shrink-0">
-            <img
-              src={agentPhoto}
-              alt="Agent"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Agent Details */}
-          <div className="flex flex-col flex-1 text-center md:text-left">
-            {/* Name */}
-            <h3 className="text-xl sm:text-2xl font-semibold">
-              James Harrison
-            </h3>
-
-            {/* Position */}
-            <p className="text-[#c79b5d] text-sm mb-3">
-              Senior Property Consultant
-            </p>
-
-            {/* Contact Info Row */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-gray-600 mb-4">
-              {/* Phone */}
-              <div className="flex items-center gap-2">
-                <Phone size={16} className="text-[#c79b5d]" />
-                <span>+44 20 7946 0958</span>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-center gap-2">
-                <Mail size={16} className="text-[#c79b5d]" />
-                <span>james@prestige-estates.co.uk</span>
-              </div>
-
-              {/* Experience */}
-              <div className="flex items-center gap-2">
-                <Star size={16} className="text-[#c79b5d]" />
-                <span>15 Years Experience</span>
-              </div>
-            </div>
-
-            {/* Contact Button */}
-            <button className="bg-[#c79b5d] text-white px-6 py-3 rounded-full w-fit hover:opacity-90 transition flex items-center gap-2 mx-auto md:mx-0">
-              <Phone size={18} />
-              Contact Agent
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= END AGENT CONTACT SECTION ================= */}
 
       {/* ================= SIMILAR PROPERTIES SECTION ================= */}
 
