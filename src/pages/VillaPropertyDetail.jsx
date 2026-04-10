@@ -35,9 +35,11 @@ import similar1 from "../assets/similar-1.jpg";
 import similar2 from "../assets/similar-2.jpg";
 import similar3 from "../assets/similar-3.jpg";
 import { CheckCircle } from "lucide-react";
+import ScheduleViewingModal from "../components/ScheduleViewingModal";
 export default function VillaPropertyDetail() {
 
   const [mainImage, setMainImage] = useState(heroImage);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="w-full px-3 sm:px-6 lg:px-10 py-6">
@@ -190,9 +192,18 @@ export default function VillaPropertyDetail() {
             </button>
 
             {/* Schedule Button */}
-            <button className="border border-gray-300 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition">
-              Schedule Viewing
-            </button>
+           <button 
+                   onClick={() => setIsModalOpen(true)}
+                   className="border border-gray-300 px-6 py-3 rounded-full font-medium"
+                 >
+                   Schedule Viewing
+                 </button>
+                 
+                 <ScheduleViewingModal 
+                   isOpen={isModalOpen} 
+                   onClose={() => setIsModalOpen(false)} 
+                   propertyName="The Kensington Residence" // Change this per file
+                 />
           </div>
         </div>
 
