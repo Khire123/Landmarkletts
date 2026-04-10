@@ -44,7 +44,7 @@ const Contact = () => {
 
   const cards = [
     { icon: Phone, title: "Call Us", main: "020 3633 9443", sub: "Mon–Fri, 10am–6pm" },
-    { icon: Mail, title: "Email Us", main: "landmarkletts@gmail.com", sub: "We reply within 24 hours" },
+    { icon: Mail, title: "Email Us", main: "contact@landmarkletts.co.uk", sub: "We reply within 24 hours" },
     { icon: MapPin, title: "Visit Us", main: "Jhumat House, London Rd, IG11 8BB", sub: "By appointment only" },
     { icon: Clock, title: "Working Hours", main: "Mon – Fri: 9:00 – 18:00", sub: "Sat/Sun: closed" },
   ];

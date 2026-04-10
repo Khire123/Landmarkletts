@@ -4,7 +4,7 @@ import "./whatsapp.css";
 const WhatsAppWidget = () => {
   const [open, setOpen] = useState(false);
 
-  const phoneNumber = "917039376721";
+  const phoneNumber = "918082246786";
   const message =
     "Hi, I'm interested in your services. Can you share more details?";
 
