@@ -7,10 +7,10 @@ import {
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
-  FaClock,
   FaArrowRight,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link"; // Changed to HashLink for section scrolling
 import { createClient } from "@supabase/supabase-js";
 
 // SECURE INITIALIZATION
@@ -67,22 +67,26 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
+        {/* Quick Links - Updated with HashLink and root paths */}
         <div>
           <h4 className="font-semibold mb-5 text-[#1c1c1c]">Quick Links</h4>
           <ul className="space-y-3 text-sm text-gray-600">
             {[
-              { name: "Home", href: "#" },
-              { name: "Listing", href: "#listing" },
-              { name: "About Us", href: "#about" },
-              { name: "Our Services", href: "#services" },
-              { name: "Who We Serve", href: "#serve" },
-              { name: "Contact", href: "#contact" },
+              { name: "Home", href: "/#" },
+              { name: "Listing", href: "/#listing" },
+              { name: "About Us", href: "/#about" },
+              { name: "Our Services", href: "/#services" },
+              { name: "Who We Serve", href: "/#serve" },
+              { name: "Contact", href: "/#contact" },
             ].map((item, i) => (
               <li key={i}>
-                <a href={item.href} className="hover:text-[#b28a4a] transition cursor-pointer">
+                <HashLink 
+                  smooth 
+                  to={item.href} 
+                  className="hover:text-[#b28a4a] transition cursor-pointer"
+                >
                   {item.name}
-                </a>
+                </HashLink>
               </li>
             ))}
           </ul>
